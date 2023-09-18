@@ -268,7 +268,7 @@ class HomeController extends Controller
         }
     }
 
-    // ChangeCurrentBusiness
+    // ChangeCurrentBusiness s
     public function changeCurrantBusiness($business_id)
     {
         $user = Auth::user();

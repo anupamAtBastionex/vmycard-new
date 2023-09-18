@@ -56,7 +56,7 @@ use App\Http\Controllers\PaytrController;
 
 require __DIR__ . '/auth.php';
 
-
+//some new controller
 Route::get('/', [HomeController::class, 'landingPage'])->middleware('XSS')->name('home');
 Route::get('/tc', [TccController::class, 'index'])->middleware('XSS')->name('tcc');
 Route::get('/refund', [TccController::class, 'refund'])->middleware('XSS')->name('refund');
