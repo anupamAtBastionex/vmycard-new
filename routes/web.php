@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TccController;
+use App\Http\Controllers\PhysicalController;
 use App\Http\Controllers\AppointmentDeatailController;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\UserController;
@@ -60,6 +61,7 @@ require __DIR__ . '/auth.php';
 Route::get('/', [HomeController::class, 'landingPage'])->middleware('XSS')->name('home');
 Route::get('/tc', [TccController::class, 'index'])->middleware('XSS')->name('tcc');
 Route::get('/refund', [TccController::class, 'refund'])->middleware('XSS')->name('refund');
+
 
 Route::any('cookie_consent', [SystemController::class, 'CookieConsent'])->name('cookie-consent');
 Route::any('card_cookie_consent', [BusinessController::class, 'cardCookieConsent'])->name('card-cookie-consent');
@@ -148,6 +150,7 @@ Route::group(['middleware' => ['verified']], function () {
 
     });
 
+    Route::get('/physical_card', [PhysicalController::class, 'index'])->middleware('XSS', 'auth')->name('physical_card.index');
     
     
     Route::post('stripe-settings', [SystemController::class, 'savePaymentSettings'])->middleware('XSS', 'auth')->name('payment.settings');

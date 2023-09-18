@@ -84,6 +84,12 @@
                         @endif
                     </ul>
                 </li>
+
+                <li class="dash-item {{ (Request::segment(1) == 'physical_card')?'active':''}}">
+                        <a href="{{route('physical_card.index')}}" class="dash-link"><span class="dash-micon"><i
+                                    class="ti ti-calendar-time"></i></span><span class="dash-mtext">Physical Card</span></a>
+
+                    </li>
                
                 @if(\Auth::user()->can('manage appointment'))
                     <li class="dash-item {{ (Request::segment(1) == 'appointments')?'active':''}}">
