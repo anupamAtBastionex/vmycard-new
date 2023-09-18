@@ -596,12 +596,12 @@ ul.imgsmgroup li {
                     <li class="text-muted">© {{ date('Y') }} &nbsp;{{ isset($langSetting['footer_text']) ? $langSetting['footer_text'] : 'Metaspace Technologies Private Limited | All Rights Reserved' }}
                         <br>
                         <span class="text-muted">
-                        <a class="nav-link" href="javascript:void(0)"  data-bs-toggle="modal" data-bs-target="#t-c" style="font-size:12px; display:inline-block; padding:0px">
+                        <a class="nav-link" href="{{ url('tc') }}"    style="font-size:12px; display:inline-block; padding:0px">
                                 Term & Conditions
                             </a>
                         </span> &nbsp;&nbsp;
                         <span class="text-muted">
-                        <a class="nav-link " href="javascript:void(0)"  data-bs-toggle="modal" data-bs-target="#refund" style="font-size:12px; display:inline-block; padding:0px">
+                        <a class="nav-link " href="{{ url('refund') }}"    style="font-size:12px; display:inline-block; padding:0px">
                                 Refund & cancellation policy
                             </a>
                         </span>

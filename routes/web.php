@@ -4,6 +4,7 @@ use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TccController;
 use App\Http\Controllers\AppointmentDeatailController;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\UserController;
@@ -57,6 +58,9 @@ require __DIR__ . '/auth.php';
 
 
 Route::get('/', [HomeController::class, 'landingPage'])->middleware('XSS')->name('home');
+Route::get('/tc', [TccController::class, 'index'])->middleware('XSS')->name('tcc');
+Route::get('/refund', [TccController::class, 'refund'])->middleware('XSS')->name('refund');
+
 Route::any('cookie_consent', [SystemController::class, 'CookieConsent'])->name('cookie-consent');
 Route::any('card_cookie_consent', [BusinessController::class, 'cardCookieConsent'])->name('card-cookie-consent');
 
@@ -279,6 +283,8 @@ Route::group(['middleware' => ['verified']], function () {
     Route::get('/contacts/business/show{id}', [ContactsController::class, 'index'])->middleware('XSS', 'auth')->name('business.contacts.show');
     Route::get('/contacts/edit/{id}', [ContactsController::class, 'edit'])->middleware('XSS', 'auth')->name('contacts.edit');
     Route::post('/contacts/update/{id}', [ContactsController::class, 'update'])->middleware('XSS', 'auth')->name('Contacts.update');
+
+    
 
     /*========================================================================================================================*/
     Route::post('business/custom-js-setting/{id}', [BusinessController::class, 'savejsandcss'])->name('business.custom-js-setting');
