@@ -1,13 +1,13 @@
 @php
-
+    
     // get theme color
     $setting = App\Models\Utility::colorset();
     $layout_setting = App\Models\Utility::getLayoutsSetting();
     $color = !empty($setting['color']) ? $setting['color'] : 'theme-3';
     $company_logo = \App\Models\Utility::GetLogo();
-
+    
     $logo = \App\Models\Utility::get_file('uploads/logo/');
-
+    
     $company_favicon = Utility::getValByName('company_favicon');
     $set_cookie = App\Models\Utility::cookie_settings();
     $lang=app()->getLocale('lang');
@@ -42,7 +42,7 @@
     @if ($setting['SITE_RTL'] == 'on')
         <link rel="stylesheet" href="{{ asset('assets/css/style-rtl.css') }}">
     @endif
-
+    
     @if (isset($setting['cust_darklayout']) && $setting['cust_darklayout'] == 'on')
         <link rel="stylesheet" href="{{ asset('assets/css/style-dark.css') }}">
     @else
@@ -61,7 +61,7 @@
             img.navbar-brand-img {
                 width: 245px;
                 height: 61px;
-            }
+            } 
     </style>
 </head>
 
@@ -132,13 +132,13 @@
 <li>
     <h4>How Do I Share My Digital Business Card?
 </h4>
-    <p><b>Ans.-</b> Sharing your digital business card with vMyCards is simple; just tap your card on the back of a phone or access it through a QR code. But first, you need to sign up and create an account with us.
+    <p><b>Ans.-</b> Sharing your digital business card with vMyCards is simple; just tap your card on the back of a phone or access it through a QR code. But first, you need to sign up and create an account with us. 
 </p>
 </li>
 <li>
     <h4> How Many Digital Business Cards Can I Create?
 </h4>
-    <p><b>Ans.-</b> With vMyCards, you can create as many digital business cards as you need to suit various networking and business situations.
+    <p><b>Ans.-</b> With vMyCards, you can create as many digital business cards as you need to suit various networking and business situations. 
 </p>
 </li>
 <li>
@@ -192,7 +192,7 @@
 <div class="conatntwrap tc">
 
   <div>
-
+              
 
 <h2>1. Acceptance of Terms:</h2>
 <p>By accessing and using vmycards.com, you agree to comply with and be bound by these Terms and Conditions.</p>
@@ -269,8 +269,8 @@ b. <strong>Limitation of Liability:</strong> vmycards.com shall not be liable fo
 <div class="conatntwrap pri">
 
   <div>
-
-
+   
+    
       <p>
         <strong>Introduction:</strong>
       </p>
@@ -317,7 +317,7 @@ b. <strong>Limitation of Liability:</strong> vmycards.com shall not be liable fo
         <strong>Contact Us:</strong>
       </p>
       <p>If you have questions or concerns about our Privacy Policy, you can contact us at <a href="mailto:info@metaspacechain.com">info@metaspacechain.com</a>. </p>
-
+    
                 </div>
 </div>
       </div>
@@ -334,7 +334,7 @@ b. <strong>Limitation of Liability:</strong> vmycards.com shall not be liable fo
 
 
 <!----------------------->
-
+    
     <div class="auth-wrapper auth-v3">
         <div class="bg-auth-side bg-primary"></div>
         <div class="auth-content">
@@ -363,7 +363,7 @@ b. <strong>Limitation of Liability:</strong> vmycards.com shall not be liable fo
                                         <a class="nav-link " href="#"  data-bs-toggle="modal" data-bs-target="#faq">FAQ's</a>
                                     </li>
                                     <li class="nav-item">
-                                        T&C</a>
+                                        <a class="nav-link" href="#"  data-bs-toggle="modal" data-bs-target="#t-c">T&C</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#"  data-bs-toggle="modal" data-bs-target="#privacy">Privacy</a>
@@ -378,6 +378,11 @@ b. <strong>Limitation of Liability:</strong> vmycards.com shall not be liable fo
 
 
                     <!-- Button trigger modal -->
+
+
+
+
+
 
                     @yield('content')
                     <div class="auth-footer">
@@ -400,7 +405,7 @@ b. <strong>Limitation of Liability:</strong> vmycards.com shall not be liable fo
         </div>
     </div>
 
-    <!-- Required Js -->
+    <!-- Required Js --> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
          @if (isset($setting['cust_darklayout']) && $setting['cust_darklayout'] == 'on')
@@ -420,7 +425,7 @@ b. <strong>Limitation of Liability:</strong> vmycards.com shall not be liable fo
     @include('layouts.cookie_consent')
 @endif
 
-</html>
+</html> 
 @php
   exit();
 @endphp

@@ -38,6 +38,7 @@ use App\Http\Controllers\BenefitPaymentController;
 use App\Http\Controllers\CashfreeController;
 use App\Http\Controllers\AamarpayController;
 use App\Http\Controllers\PaytrController;
+use App\Http\Controllers\TccController;
 
 
 
@@ -59,9 +60,13 @@ require __DIR__ . '/auth.php';
 Route::get('/', [HomeController::class, 'landingPage'])->middleware('XSS')->name('home');
 Route::any('cookie_consent', [SystemController::class, 'CookieConsent'])->name('cookie-consent');
 Route::any('card_cookie_consent', [BusinessController::class, 'cardCookieConsent'])->name('card-cookie-consent');
+Route::get('/tc', [TccController::class, 'index'])->middleware('XSS')->name('tcc');
+Route::get('/refund', [TccController::class, 'refund'])->middleware('XSS')->name('refund');
+Route::get('/privacy-policy', [TccController::class, 'privacy'])->middleware('XSS')->name('privacy.policy');
+Route::get('/faqs', [TccController::class, 'faqs'])->middleware('XSS')->name('faqs');
 
 Route::group(['middleware' => ['verified']], function () {
-    
+
     Route::get('/home', [HomeController::class, 'index'])->middleware('XSS', 'auth', 'CheckPlan')->name('home');
     Route::get('/dashboard', [HomeController::class, 'index'])->middleware('XSS', 'auth', 'CheckPlan')->name('dashboard');
     Route::get('/dashboard/{id}', [HomeController::class, 'changeCurrantBusiness'])->name('business.change');
@@ -131,7 +136,7 @@ Route::group(['middleware' => ['verified']], function () {
 
         Route::resource('webhook', WebhookController::class);
 
-        // Ai Chatgpt 
+        // Ai Chatgpt
         Route::post('chatgptkey', [SystemController::class, 'chatgptkey'])->name('settings.chatgptkey');
         Route::get('generate/{template_name}', [AiTemplateController::class, 'create'])->name('generate');
 
@@ -144,8 +149,8 @@ Route::group(['middleware' => ['verified']], function () {
 
     });
 
-    
-    
+
+
     Route::post('stripe-settings', [SystemController::class, 'savePaymentSettings'])->middleware('XSS', 'auth')->name('payment.settings');
     Route::post('cookie_setting', [SystemController::class, 'saveCookieSettings'])->middleware('XSS', 'auth')->name('cookie.setting');
 
@@ -161,7 +166,7 @@ Route::group(['middleware' => ['verified']], function () {
 
     Route::any('plan-mercado-callback/{plan_id}', [MercadoPaymentController::class, 'mercadopagoPaymentCallback'])->middleware('auth')->name('plan.mercado.callback');
     Route::resource('plans', PlanController::class)->middleware('XSS');
-    
+
 
     Route::get('business/{slug}/get_card', [BusinessController::class, 'cardpdf'])->name('get.card');
     Route::get('businessqr/download/', [BusinessController::class, 'downloadqr'])->middleware('XSS', 'auth')->name('download.qr');
@@ -231,14 +236,14 @@ Route::group(['middleware' => ['verified']], function () {
     Route::get('order-view/{id}', [bankTransferController::class, 'viewOrder'])->middleware('XSS', 'auth')->name('view.status.bank');
     Route::get('assign_plan_status/{id}/{response}', [bankTransferController::class, 'ChangeStatus'])->middleware('XSS', 'auth')->name('change.status');
 
-    //sspay 
+    //sspay
     Route::post('sspay-prepare-plan', [SspayController::class, 'SspayPaymentPrepare'])->middleware(['auth'])->name('sspay.prepare.plan');
     Route::get('sspay-payment-plan/{plan_id}/{amount}/{couponCode}', [SspayController::class, 'SspayPlanGetPayment'])->middleware(['auth'])->name('plan.sspay.callback');
     //iyzipay
     Route::post('iyzipay/prepare', [IyziPayController::class, 'initiatePayment'])->name('iyzipay.payment.init');
     Route::post('iyzipay/callback/plan/{id}/{amount}/{coupan_code?}', [IyzipayController::class, 'iyzipayCallback'])->name('iyzipay.payment.callback');
 
-    //paytab 
+    //paytab
     Route::post('plan-pay-with-paytab', [PaytabController::class, 'planPayWithpaytab'])->middleware(['auth'])->name('plan.pay.with.paytab');
     Route::any('plan-paytab-success/', [PaytabController::class, 'PaytabGetPayment'])->middleware(['auth'])->name('plan.paytab.success');
 
@@ -324,3 +329,4 @@ Route::group(['middleware' => ['verified']], function () {
 Route::get('/download/{slug}', [BusinessController::class, 'getVcardDownload'])->name('bussiness.save');
 Route::post('appoinment/make-appointment', [AppointmentDeatailController::class, 'store'])->middleware('XSS')->name('appoinment.store');
 Route::post('/contacts/store/', [ContactsController::class, 'store'])->name('contacts.store');
+

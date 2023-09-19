@@ -65,7 +65,6 @@
                                 {{ $plan->description }}
                             </p>
 
-                            
                             <ul class="list-unstyled my-4">
                                 <li>
                                     <span class="theme-avtar">

@@ -14,8 +14,27 @@
       <title>{{(Utility::getValByName('title_text')) ? Utility::getValByName('title_text') : config('app.name', 'vCardGo SaaS')}}</title>
 
       <link rel="icon" href="{{ $logo. '/favicon.png' }}" type="image/x-icon" />
-      
-@include('layouts.fix-header')
+
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="{{ asset('landing/assets/css/style.css') }}">
+      <!-- Stylesheets -->
+      <!-- <link rel="stylesheet" href="./assets/css/docs.theme.min.css"> -->
+      <!-- Owl Stylesheets -->
+      <link rel="stylesheet" href="{{ asset('landing/assets/css/owl.carousel.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('landing/assets/css/owl.theme.default.min.css') }}">
+      <script src="{{ asset('landing/assets/js/jquery.min.js') }}"></script>
+      <script src="{{ asset('landing/assets/js/owl.carousel.js') }}"></script>
+
+      @if ($setting['SITE_RTL'] == 'on')
+        <link rel="stylesheet" href="{{ asset('assets/css/style-rtl.css') }}">
+    @endif
+    @if (isset($setting['cust_darklayout']) && $setting['cust_darklayout'] == 'on')
+        <link rel="stylesheet" href="{{ asset('assets/css/style-dark.css') }}">
+    @else
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    @endif
+    <link rel="stylesheet" href="{{ asset('custom/css/custom.css') }}">
+
 <style type="text/css">
    .logo{
       max-width: 160px;
@@ -31,16 +50,17 @@
    a.btn.theme-bg.try_theme_btn {
     background: #1363a9;
 }
-        button.btn.btn-submitform {
-    background: #0059a7;
-    width: 100%;
-    color: #fff;
-    font-size: 17px;
-}
 
-</style>
+    button.btn.btn-submitform {
+                                background: #0059a7;
+                                width: 100%;
+                                color: #fff;
+                                font-size: 17px;
+                            }
 
-   </head>
+ </style>
+
+</head>
    <body translate="no">
       <nav class="custom_navbar">
          <div class="first_side_vector">
@@ -474,8 +494,8 @@ ul.imgsmgroup li {
          </div>
       </section>
       <section class="py-5  pb-0 contact-uspage" id="contact">
-        <div class="container">
-            <div class="row align-items-center">
+  <div class="container">
+  <div class="row align-items-center">
                <div class="col-lg-12 col-md-12 m-auto">
                   <div class="blog-section">
                      <div class="blog-heading text-center">
@@ -490,71 +510,101 @@ ul.imgsmgroup li {
                   </div>
                </div>
             </div>
-          <div class="row justify-content-center pb-5">
-            <div class="col-12 col-lg-6">
-                <div class="contact-form">
-                <form method="POST" action="" accept-charset="UTF-8" class="row g-3"><input name="_token" type="hidden" value="ajkgJl0Kdfrc8hfUIuLYIZ5BsTCZo0RhvYZNouLi">
-                    <div class="col-md-6">
-                        <input type="text" class="form-control clear_string" placeholder="First Name" name="first_name" value="" required="">
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control clear_string" placeholder="Last Name" name="last_name" value="" required="">
-                    </div>
-                    <div class="col-12">
-                        <input type="text" class="form-control" placeholder="Email" name="email" value="" required="">
-                    </div>
-                    <div class="col-12">
-                        <input type="text" class="form-control clear_string" maxlength="10" minlength="10" placeholder="Mobile Number" name="mobile_number" value="" required="">
-                    </div>
-                    <div class="col-12">
-                        <textarea class="form-control clear_string" rows="3" placeholder="Message*" required="" name="message"></textarea>
-                    </div>
+    <div class="row justify-content-center pb-5">
+      <div class="col-12 col-lg-6">
+        <div class="contact-form">
+          <form method="POST" action="" accept-charset="UTF-8" class="row g-3"><input name="_token" type="hidden" value="ajkgJl0Kdfrc8hfUIuLYIZ5BsTCZo0RhvYZNouLi">
+              <div class="col-md-6">
+                  <input type="text" class="form-control clear_string" placeholder="First Name" name="first_name" value="" required="">
+              </div>
+              <div class="col-md-6">
+                  <input type="text" class="form-control clear_string" placeholder="Last Name" name="last_name" value="" required="">
+              </div>
+              <div class="col-12">
+                  <input type="text" class="form-control" placeholder="Email" name="email" value="" required="">
+              </div>
+              <div class="col-12">
+                  <input type="text" class="form-control clear_string" maxlength="10" minlength="10" placeholder="Mobile Number" name="mobile_number" value="" required="">
+              </div>
+              <div class="col-12">
+                  <textarea class="form-control clear_string" rows="3" placeholder="Message*" required="" name="message"></textarea>
+              </div>
 
-                    <input type="hidden" name="query_type" value="0">
-                    <input type="hidden" name="contact_us" value="0">
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-submitform">Submit</button>
-                    </div>
-                </form>
-            </div>
+              <input type="hidden" name="query_type" value="0">
+              <input type="hidden" name="contact_us" value="0">
+              <div class="col-12">
+                  <button type="submit" class="btn btn-submitform">Submit</button>
+              </div>
+          </form>
+      </div>
 
-            <div class="vector_4">
-                        <img src="http://localhost:8000/landing/assets/img/bg_vector.svg" alt="Vector2" class="img-fluid">
+      <div class="vector_4">
+                  <img src="http://localhost:8000/landing/assets/img/bg_vector.svg" alt="Vector2" class="img-fluid">
+               </div>
+      </div>
+    <div class="col-12 col-lg-6 javascript">
+       <div class="conatntwrap">
+            <div class="f-link accordion-list ">
+            <ul>
+                <li>
+                    <div class="infofooter">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div class="info">
+                            B-2, Sector-4, Noida, Gautam Buddh <br>
+                            Nagar, Uttar Pradesh, India, 201301
+                        </div>
                     </div>
-            </div>
-            <div class="col-12 col-lg-6 d-none">
-                <div class="conatntwrap">
-                    <div class="f-link accordion-list ">
-                        <ul>
-                        <li>
-                            <div class="infofooter">
-                                <i class="fa-solid fa-location-dot"></i>
-                                <div class="info">
-                                    B-2, Sector-4, Noida, Gautam Buddh <br>
-                                    Nagar, Uttar Pradesh, India, 201301
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="infofooter">
-                                <i class="fa-solid fa-envelope"></i>
-                                <a href="" class="info">   info@bastionex.net</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="infofooter">
-                                <i class="fa-solid fa-phone"></i>
-                                <a href="" class="info"> +91 9958290036</a>
-                            </div>
-                        </li>
-                        </ul>
+                </li>
+                <li>
+                    <div class="infofooter">
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="" class="info">   info@bastionex.net</a>
                     </div>
-                </div>
+                </li>
+                <li>
+                    <div class="infofooter">
+                        <i class="fa-solid fa-phone"></i>
+                        <a href="" class="info"> +91 9958290036</a>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        </div>
       </div>
     </div>
   </div>
-   @include('layouts.fix-footer')
+   <nav class="custom_navbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="logo footer_logo">
+                    <h4><a href="{{ url('/') }}"><img src="{{ asset('landing/assets/img/logo-dark.png') }}"></a></h4>
+                    </div>
+                    <ul class="nav-links footer-nav-links ">
+                    <li class="text-muted"></li>
+
+                    <li class="text-muted">© {{ date('Y') }} &nbsp;{{ isset($langSetting['footer_text']) ? $langSetting['footer_text'] : 'Metaspace Technologies Private Limited | All Rights Reserved' }}
+                        <br>
+                        <span class="text-muted">
+                        <a class="nav-link" href="javascript:void(0)"  data-bs-toggle="modal" data-bs-target="#t-c" style="font-size:12px; display:inline-block; padding:0px">
+                                Term & Conditions
+                            </a>
+                        </span> &nbsp;&nbsp;
+                        <span class="text-muted">
+                        <a class="nav-link " href="javascript:void(0)"  data-bs-toggle="modal" data-bs-target="#refund" style="font-size:12px; display:inline-block; padding:0px">
+                                Refund & cancellation policy
+                            </a>
+                        </span>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
 </section>
+
       <script
          src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
       <script id="rendered-js">
@@ -564,7 +614,7 @@ ul.imgsmgroup li {
            const nav = document.querySelector('.nav-links');
            const navLinks = document.querySelectorAll('.nav-links li');
 
-           //Toggle Nav v
+           //Toggle Nav
            burger.addEventListener('click', () => {
              nav.classList.toggle('nav-active');
 
@@ -593,83 +643,6 @@ ul.imgsmgroup li {
    @if($set_cookie['enable_cookie'] == 'on')
    @include('layouts.cookie_consent')
    @endif
-
-<!-- Modal -->
-<div class="modal fade" id="t-c" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel"><h3>Terms and Conditions</h3></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <section class="tandcpage">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-lg-12">
-
-<div class="conatntwrap tc">
-
-  <div>
-
-
-<h2>1. Acceptance of Terms:</h2>
-<p>By accessing and using vmycards.com, you agree to comply with and be bound by these Terms and Conditions.</p>
-
-<h2>2. Use of the Website:</h2>
-<p>
-a. <strong>Eligibility:</strong> You must be at least 18 years old to use this Website.<br>
-b. <strong>User Account:</strong> You may need to create an account to access certain features. You are responsible for maintaining the confidentiality of your account information and are liable for all activities that occur under your account.
-</p>
-
-<h2>3. Intellectual Property:</h2>
-<p>
-a. <strong>Ownership:</strong> All content on the Website, including text, images, logos, and trademarks, is the property of vmycards.com and is protected by copyright and other intellectual property laws.<br>
-b. <strong>Limited License:</strong> You are granted a limited, non-exclusive, non-transferable license to access and use the content for personal, non-commercial purposes.
-</p>
-
-<h2>4. User Content:</h2>
-<p>
-a. <strong>Responsibility:</strong> You are responsible for any content you submit to the Website. You grant vmycards.com a non-exclusive, worldwide, royalty-free license to use, reproduce, modify, and distribute your content.<br>
-b. <strong>Prohibited Content:</strong> You may not submit content that is illegal, defamatory, obscene, or violates the rights of others.
-</p>
-
-<h2>5. Privacy Policy:</h2>
-<p>Your use of the Website is also governed by our <a href="https://vmycards.com/privacy-policy">Privacy Policy</a>, which outlines how we collect, use, and protect your information.</p>
-
-<h2>6. Limitation of Liability:</h2>
-<p>
-a. <strong>Disclaimer:</strong> The Website and its content are provided "as is" without any warranties, express or implied.<br>
-b. <strong>Limitation of Liability:</strong> vmycards.com shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Website.
-</p>
-
-<h2>7. Indemnification:</h2>
-<p>You agree to indemnify and hold vmycards.com, its employees, and affiliates harmless from any claims, liabilities, damages, losses, and expenses arising from your use of the Website or violation of these Terms.</p>
-
-<h2>8. Changes to Terms:</h2>
-<p>vmycards.com reserves the right to modify or update these Terms and Conditions at any time. Changes will be effective upon posting on the Website. Your continued use of the Website after changes constitutes acceptance of the updated Terms.</p>
-
-<h2>9. Governing Law and Jurisdiction:</h2>
-<p>These Terms are governed by and construed in accordance with the laws of [Your Jurisdiction]. Any disputes arising from these Terms shall be subject to the exclusive jurisdiction of the courts in [Your Jurisdiction].</p>
-
-<h2>10. Contact Information:</h2>
-<p>If you have any questions or concerns regarding these Terms and Conditions, you can contact us at <a href="mailto:info@metaspacechain.com">info@metaspacechain.com</a>.</p>
-
-    </div>
-</div>
-      </div>
-    </div>
-  </div>
-</section>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 
 </html>
 @php
