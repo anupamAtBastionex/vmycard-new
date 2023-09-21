@@ -131,7 +131,7 @@
             <div class="page-block">
                 <div class="row gy-4 align-items-center">
                     <div class="col-md-4">
-                        <h3 class="mb-0 text-primary">{{__(ucfirst($business->title))}}</h3>
+                        <h3 class="mb-0 text-primary mybusi">{{__(ucfirst($business->title))}}</h3>
                     </div>
 
                     <div class="col-md-8">

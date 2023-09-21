@@ -40,7 +40,7 @@ use App\Http\Controllers\BenefitPaymentController;
 use App\Http\Controllers\CashfreeController;
 use App\Http\Controllers\AamarpayController;
 use App\Http\Controllers\PaytrController;
-use App\Http\Controllers\TccController;
+// use App\Http\Controllers\TccController;
 
 
 
@@ -75,6 +75,12 @@ Route::get('/faqs', [TccController::class, 'faqs'])->middleware('XSS')->name('fa
 Route::get('/about', [TccController::class, 'about'])->middleware('XSS')->name('about');
 
 Route::group(['middleware' => ['verified']], function () {
+
+    Route::get('/physical_card', [PhysicalController::class, 'index'])->middleware('XSS', 'auth')->name('physical_card.index');
+    // Route::post('/physical_card', [PhysicalController::class, 'index'])->middleware('XSS', 'auth')->name('physical_card.index');
+
+    Route::post('/get_dyn_phycard', [PhysicalController::class, 'getCont'])->middleware('XSS', 'auth');
+
 
     Route::get('/home', [HomeController::class, 'index'])->middleware('XSS', 'auth', 'CheckPlan')->name('home');
     Route::get('/dashboard', [HomeController::class, 'index'])->middleware('XSS', 'auth', 'CheckPlan')->name('dashboard');
@@ -158,14 +164,8 @@ Route::group(['middleware' => ['verified']], function () {
 
     });
 
-<<<<<<< HEAD
-    Route::get('/physical_card', [PhysicalController::class, 'index'])->middleware('XSS', 'auth')->name('physical_card.index');
-    
-    
-=======
 
 
->>>>>>> 73e9784e280d2b870a73c4de85d5c8395d7efaaa
     Route::post('stripe-settings', [SystemController::class, 'savePaymentSettings'])->middleware('XSS', 'auth')->name('payment.settings');
     Route::post('cookie_setting', [SystemController::class, 'saveCookieSettings'])->middleware('XSS', 'auth')->name('cookie.setting');
 
