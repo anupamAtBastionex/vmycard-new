@@ -197,7 +197,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        
+
         App\Providers\RouteServiceProvider::class,
 
         /* Setup Wizard */
@@ -261,7 +261,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Form' => Collective\Html\FormFacade::class,
+        'Form' => Collective\Htmvvl\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Utility' => App\Models\Utility::class,
         'Visitor' => Shetabit\Visitor\Facade\Visitor::class,

@@ -14,27 +14,7 @@
       <title>{{(Utility::getValByName('title_text')) ? Utility::getValByName('title_text') : config('app.name', 'vCardGo SaaS')}}</title>
 
       <link rel="icon" href="{{ $logo. '/favicon.png' }}" type="image/x-icon" />
-
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-      <link rel="stylesheet" href="{{ asset('landing/assets/css/style.css') }}">
-      <!-- Stylesheets -->
-      <!-- <link rel="stylesheet" href="./assets/css/docs.theme.min.css"> -->
-      <!-- Owl Stylesheets -->
-      <link rel="stylesheet" href="{{ asset('landing/assets/css/owl.carousel.min.css') }}">
-      <link rel="stylesheet" href="{{ asset('landing/assets/css/owl.theme.default.min.css') }}">
-      <script src="{{ asset('landing/assets/js/jquery.min.js') }}"></script>
-      <script src="{{ asset('landing/assets/js/owl.carousel.js') }}"></script>
-
-      @if ($setting['SITE_RTL'] == 'on')
-        <link rel="stylesheet" href="{{ asset('assets/css/style-rtl.css') }}">
-    @endif
-    @if (isset($setting['cust_darklayout']) && $setting['cust_darklayout'] == 'on')
-        <link rel="stylesheet" href="{{ asset('assets/css/style-dark.css') }}">
-    @else
-        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    @endif
-    <link rel="stylesheet" href="{{ asset('custom/css/custom.css') }}">
-
+      @include('layouts.fix-header')
 <style type="text/css">
    .logo{
       max-width: 160px;
@@ -50,11 +30,25 @@
    a.btn.theme-bg.try_theme_btn {
     background: #1363a9;
 }
+.blog{
+    margin-bottom:50px;
+}
+.blog h2{
+    font-size:1.25rem;
+}
 
 </style>
 
    </head>
    <body translate="no">
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TX399K8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=677863144263844&ev=PageView&noscript=1"
+/></noscript>
+
       <nav class="custom_navbar">
          <div class="first_side_vector">
             <img src="{{ asset('landing/assets/img/vector0.svg') }}" alt="vector0" class="img-fluid">
@@ -83,9 +77,9 @@
                   </div>
                   <ul class="nav-links">
                      <li><a href="{{ url('/') }}">Overview</a></li>
-                     <li><a href="#functions">Functions</a></li>
-                     <li><a href="#">Pricing</a></li>
-                     <li><a href="#contact">Contact</a></li>
+                     <li><a href="{{ url('/#functions') }}">Functions</a></li>
+                     <li><a href="{{ url('/') }}">Pricing</a></li>
+                     <li><a href="{{ url('/#contact') }}">Contact</a></li>
                      <li class="try-btn "><a href="{{ route('login') }}">{{__('Log in')}}</a></li>
                      @if(Utility::getValByName('signup_button') == 'on')
                      <li class="try-btn"><a href="{{ route('register') }}">{{__('Register')}}</a></li>
@@ -100,101 +94,80 @@
             </div>
          </div>
       </nav>
-      
-     
+
+
 
 <section class="blog">
-    
-<div class="container">
-            <div class="row">
-               <div class="col-lg-12 col-md-12">
-
-               <h1>Cancellation and Refund Policy</h1>
-    
-    <p>This Cancellation and Refund Policy outlines the terms and conditions governing cancellations and refunds for products and services purchased from vmycards.com ("the Website"). <br/>By purchasing from our Website, you agree to the terms stated herein.</p>
-
-    <h2>Cancellation Policy</h2>
-    <p>
-        <strong>a. Order Cancellation:</strong> Customers may request to cancel their order within 24 hours after the purchase. Requests for cancellation after this period will be subject to the terms outlined below.
-    </p>
-    <p>
-        <strong>b. Service Subscription Cancellation:</strong> Customers with service subscriptions may cancel their subscription at any time, subject to the terms outlined below.
-    </p>
-
-    <h2>Refund Policy</h2>
-    <p>
-        <strong>a. Products:</strong> Refunds for products will be considered if the request is made within 3-4 working days of the purchase date. The product must be unused and in its original packaging. Refunds may be subject to a restocking fee.
-    </p>
-    <p>
-        <strong>b. Services:</strong> Refunds for services will be considered if the request is made within 2 business days of the purchase date. The refund amount may be prorated based on the portion of the service that has been delivered.
-    </p>
-
-    <h3>Non-Refundable Items and Services:</h3>
-    <p>
-        Certain items and services are non-refundable, including but not limited to [list non-refundable items/services]. These items/services are clearly indicated as non-refundable at the time of purchase.
-    </p>
-
-    <h2>Refund Process</h2>
-    <p>
-        <strong>a. To request a refund, customers must contact our customer support team at <a href="mailto:info@metaspacechain.com">info@metaspacechain.com</a> with their order details.</strong>
-    </p>
-    <p>
-        <strong>b. Refunds will be issued to the original payment method used for the purchase. Processing times for refunds may vary based on the payment provider.</strong>
-    </p>
-
-    <h2>Exceptions</h2>
-    <p>
-        <strong>a. In cases where the product or service received is defective or materially different from what was advertised, customers may be eligible for a full refund or replacement.</strong>
-    </p>
-    <p>
-        <strong>b. Events beyond our control (e.g., natural disasters, technical failures) may result in disruptions to services. In such cases, refunds may be provided at our discretion.</strong>
-    </p>
-
-    <h2>Changes to Policy</h2>
-    <p>
-        vmycards.com reserves the right to modify or update this Cancellation and Refund Policy at any time. Changes will be effective upon posting on the Website. Customers are advised to review the policy periodically.
-    </p>
-
-    <h2>Contact Information</h2>
-    <p>
-        For questions or concerns regarding cancellations and refunds, customers can contact our customer support team at <a href="mailto:info@metaspacechain.com">info@metaspacechain.com</a>.
-    </p>
-
-                  </div></div></div>
-
-    </section>
-
-
-<section>
-<nav class="custom_navbar">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="logo footer_logo">
-                    <h4><a href="{{ url('/') }}"><img src="{{ asset('landing/assets/img/logo-dark.png') }}"></a></h4>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12 col-md-12 m-auto">
+                <div class="blog-section">
+                    <div class="blog-heading text-center">
+                    <h3>
+                    Cancellation &
+                        <span>  Refund Policy</span>
+                    </h3>
                     </div>
-                    <ul class="nav-links footer-nav-links ">
-                    <li class="text-muted"></li>
-
-                    <li class="text-muted">© {{ date('Y') }} &nbsp;{{ isset($langSetting['footer_text']) ? $langSetting['footer_text'] : 'Metaspace Technologies Private Limited | All Rights Reserved' }}
-                        <br>
-                        <span class="text-muted">
-                        <a class="nav-link" href="{{ url('tc') }}"    style="font-size:12px; display:inline-block; padding:0px">
-                                Term & Conditions
-                            </a>
-                        </span> &nbsp;&nbsp;
-                        <span class="text-muted">
-                        <a class="nav-link " href="{{ url('refund') }}"    style="font-size:12px; display:inline-block; padding:0px">
-                                Refund & cancellation policy
-                            </a>
-                        </span>
-                    </li>
-                    </ul>
                 </div>
             </div>
         </div>
-    </nav>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 pt-5">
+                    <p>This Cancellation and Refund Policy outlines the terms and conditions governing cancellations and refunds for products and services purchased from vmycards.com ("the Website"). <br/>By purchasing from our Website, you agree to the terms stated herein.</p>
+                    <h2>Cancellation Policy</h2>
+                    <p>
+                        <strong>a. Order Cancellation:</strong> Customers may request to cancel their order within 24 hours after the purchase. Requests for cancellation after this period will be subject to the terms outlined below.
+                    </p>
+                    <p>
+                        <strong>b. Service Subscription Cancellation:</strong> Customers with service subscriptions may cancel their subscription at any time, subject to the terms outlined below.
+                    </p>
 
+                    <h2>Refund Policy</h2>
+                    <p>
+                        <strong>a. Products:</strong> Refunds for products will be considered if the request is made within 3-4 working days of the purchase date. The product must be unused and in its original packaging. Refunds may be subject to a restocking fee.
+                    </p>
+                    <p>
+                        <strong>b. Services:</strong> Refunds for services will be considered if the request is made within 2 business days of the purchase date. The refund amount may be prorated based on the portion of the service that has been delivered.
+                    </p>
+
+                    <h3>Non-Refundable Items and Services:</h3>
+                    <p>
+                        Certain items and services are non-refundable, including but not limited to [list non-refundable items/services]. These items/services are clearly indicated as non-refundable at the time of purchase.
+                    </p>
+
+                    <h2>Refund Process</h2>
+                    <p>
+                        <strong>a. To request a refund, customers must contact our customer support team at <a href="mailto:info@metaspacechain.com">info@metaspacechain.com</a> with their order details.</strong>
+                    </p>
+                    <p>
+                        <strong>b. Refunds will be issued to the original payment method used for the purchase. Processing times for refunds may vary based on the payment provider.</strong>
+                    </p>
+
+                    <h2>Exceptions</h2>
+                    <p>
+                        <strong>a. In cases where the product or service received is defective or materially different from what was advertised, customers may be eligible for a full refund or replacement.</strong>
+                    </p>
+                    <p>
+                        <strong>b. Events beyond our control (e.g., natural disasters, technical failures) may result in disruptions to services. In such cases, refunds may be provided at our discretion.</strong>
+                    </p>
+
+                    <h2>Changes to Policy</h2>
+                    <p>
+                        vmycards.com reserves the right to modify or update this Cancellation and Refund Policy at any time. Changes will be effective upon posting on the Website. Customers are advised to review the policy periodically.
+                    </p>
+
+                    <h2>Contact Information</h2>
+                    <p>
+                        For questions or concerns regarding cancellations and refunds, customers can contact our customer support team at <a href="mailto:info@metaspacechain.com">info@metaspacechain.com</a>.
+                    </p>
+
+                </div>
+            </div>
+    </div>
+
+</section>
+<section>
+@include('layouts.fix-footer')
 </section>
 
       <script
@@ -235,84 +208,6 @@
    @if($set_cookie['enable_cookie'] == 'on')
    @include('layouts.cookie_consent')
    @endif
-
-<!-- Modal -->
-<div class="modal fade" id="t-c" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel"><h3>Terms and Conditions</h3></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <section class="tandcpage">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-lg-12">
-
-<div class="conatntwrap tc">
-
-  <div>
-
-
-<h2>1. Acceptance of Terms:</h2>
-<p>By accessing and using vmycards.com, you agree to comply with and be bound by these Terms and Conditions.</p>
-
-<h2>2. Use of the Website:</h2>
-<p>
-a. <strong>Eligibility:</strong> You must be at least 18 years old to use this Website.<br>
-b. <strong>User Account:</strong> You may need to create an account to access certain features. You are responsible for maintaining the confidentiality of your account information and are liable for all activities that occur under your account.
-</p>
-
-<h2>3. Intellectual Property:</h2>
-<p>
-a. <strong>Ownership:</strong> All content on the Website, including text, images, logos, and trademarks, is the property of vmycards.com and is protected by copyright and other intellectual property laws.<br>
-b. <strong>Limited License:</strong> You are granted a limited, non-exclusive, non-transferable license to access and use the content for personal, non-commercial purposes.
-</p>
-
-<h2>4. User Content:</h2>
-<p>
-a. <strong>Responsibility:</strong> You are responsible for any content you submit to the Website. You grant vmycards.com a non-exclusive, worldwide, royalty-free license to use, reproduce, modify, and distribute your content.<br>
-b. <strong>Prohibited Content:</strong> You may not submit content that is illegal, defamatory, obscene, or violates the rights of others.
-</p>
-
-<h2>5. Privacy Policy:</h2>
-<p>Your use of the Website is also governed by our <a href="https://vmycards.com/privacy-policy">Privacy Policy</a>, which outlines how we collect, use, and protect your information.</p>
-
-<h2>6. Limitation of Liability:</h2>
-<p>
-a. <strong>Disclaimer:</strong> The Website and its content are provided "as is" without any warranties, express or implied.<br>
-b. <strong>Limitation of Liability:</strong> vmycards.com shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Website.
-</p>
-
-<h2>7. Indemnification:</h2>
-<p>You agree to indemnify and hold vmycards.com, its employees, and affiliates harmless from any claims, liabilities, damages, losses, and expenses arising from your use of the Website or violation of these Terms.</p>
-
-<h2>8. Changes to Terms:</h2>
-<p>vmycards.com reserves the right to modify or update these Terms and Conditions at any time. Changes will be effective upon posting on the Website. Your continued use of the Website after changes constitutes acceptance of the updated Terms.</p>
-
-<h2>9. Governing Law and Jurisdiction:</h2>
-<p>These Terms are governed by and construed in accordance with the laws of [Your Jurisdiction]. Any disputes arising from these Terms shall be subject to the exclusive jurisdiction of the courts in [Your Jurisdiction].</p>
-
-<h2>10. Contact Information:</h2>
-<p>If you have any questions or concerns regarding these Terms and Conditions, you can contact us at <a href="mailto:info@metaspacechain.com">info@metaspacechain.com</a>.</p>
-
-    </div>
-</div>
-      </div>
-    </div>
-  </div>
-</section>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
 </html>
 @php
   exit();

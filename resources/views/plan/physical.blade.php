@@ -258,11 +258,11 @@ input[type="radio"]:checked + label img {
          <div class="row justify-content-around  d-flex flex-row flex-nowrap overflow-auto ot ">
          <div class="w-maxhere">
             @php $jj=""; @endphp
-            @foreach (range(1, 9) as $key=>$value)
-            @if($value==1)
-            @php $jj="checked"; @endphp
-            @else
-            @php $jj=""; @endphp
+                @foreach (range(1, 9) as $key=>$value)
+                    @if($value==1)
+                        @php $jj="checked"; @endphp
+                    @else
+                @php $jj=""; @endphp
             @endif
     <div class="flip-box-m col-md-3 m-4">
         <input type="radio" {{ $jj }} class="custom-control-input  card_design_id_{{ $value }}" value="{{ $value }}"

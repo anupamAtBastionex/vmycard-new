@@ -1,13 +1,13 @@
 <?php
-    
+
     // get theme color
     $setting = App\Models\Utility::colorset();
     $layout_setting = App\Models\Utility::getLayoutsSetting();
     $color = !empty($setting['color']) ? $setting['color'] : 'theme-3';
     $company_logo = \App\Models\Utility::GetLogo();
-    
+
     $logo = \App\Models\Utility::get_file('uploads/logo/');
-    
+
     $company_favicon = Utility::getValByName('company_favicon');
     $set_cookie = App\Models\Utility::cookie_settings();
     $lang=app()->getLocale('lang');
@@ -42,7 +42,7 @@
     <?php if($setting['SITE_RTL'] == 'on'): ?>
         <link rel="stylesheet" href="<?php echo e(asset('assets/css/style-rtl.css')); ?>">
     <?php endif; ?>
-    
+
     <?php if(isset($setting['cust_darklayout']) && $setting['cust_darklayout'] == 'on'): ?>
         <link rel="stylesheet" href="<?php echo e(asset('assets/css/style-dark.css')); ?>">
     <?php else: ?>
@@ -61,13 +61,41 @@
             img.navbar-brand-img {
                 width: 245px;
                 height: 61px;
-            } 
+            }
     </style>
+
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5TX399K8');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Meta Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '677863144263844');
+  fbq('track', 'PageView');
+</script>
 </head>
 
 
 <body class="<?php echo e($color); ?>">
 
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TX399K8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=677863144263844&ev=PageView&noscript=1"
+/></noscript>
 
 
 <style>
@@ -132,13 +160,13 @@
 <li>
     <h4>How Do I Share My Digital Business Card?
 </h4>
-    <p><b>Ans.-</b> Sharing your digital business card with vMyCards is simple; just tap your card on the back of a phone or access it through a QR code. But first, you need to sign up and create an account with us. 
+    <p><b>Ans.-</b> Sharing your digital business card with vMyCards is simple; just tap your card on the back of a phone or access it through a QR code. But first, you need to sign up and create an account with us.
 </p>
 </li>
 <li>
     <h4> How Many Digital Business Cards Can I Create?
 </h4>
-    <p><b>Ans.-</b> With vMyCards, you can create as many digital business cards as you need to suit various networking and business situations. 
+    <p><b>Ans.-</b> With vMyCards, you can create as many digital business cards as you need to suit various networking and business situations.
 </p>
 </li>
 <li>
@@ -192,7 +220,7 @@
 <div class="conatntwrap tc">
 
   <div>
-              
+
 
 <h2>1. Acceptance of Terms:</h2>
 <p>By accessing and using vmycards.com, you agree to comply with and be bound by these Terms and Conditions.</p>
@@ -269,8 +297,8 @@ b. <strong>Limitation of Liability:</strong> vmycards.com shall not be liable fo
 <div class="conatntwrap pri">
 
   <div>
-   
-    
+
+
       <p>
         <strong>Introduction:</strong>
       </p>
@@ -317,7 +345,7 @@ b. <strong>Limitation of Liability:</strong> vmycards.com shall not be liable fo
         <strong>Contact Us:</strong>
       </p>
       <p>If you have questions or concerns about our Privacy Policy, you can contact us at <a href="mailto:info@metaspacechain.com">info@metaspacechain.com</a>. </p>
-    
+
                 </div>
 </div>
       </div>
@@ -334,7 +362,7 @@ b. <strong>Limitation of Liability:</strong> vmycards.com shall not be liable fo
 
 
 <!----------------------->
-    
+
     <div class="auth-wrapper auth-v3">
         <div class="bg-auth-side bg-primary"></div>
         <div class="auth-content">
@@ -405,7 +433,7 @@ b. <strong>Limitation of Liability:</strong> vmycards.com shall not be liable fo
         </div>
     </div>
 
-    <!-- Required Js --> 
+    <!-- Required Js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
          <?php if(isset($setting['cust_darklayout']) && $setting['cust_darklayout'] == 'on'): ?>
@@ -425,7 +453,8 @@ b. <strong>Limitation of Liability:</strong> vmycards.com shall not be liable fo
     <?php echo $__env->make('layouts.cookie_consent', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php endif; ?>
 
-</html> 
+</html>
 <?php
   exit();
-?><?php /**PATH D:\xampp\htdocs\vmycard-new\resources\views/layouts/auth.blade.php ENDPATH**/ ?>
+?>
+<?php /**PATH D:\xampp\htdocs\vmycard-new\resources\views/layouts/auth.blade.php ENDPATH**/ ?>

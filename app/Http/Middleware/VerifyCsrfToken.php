@@ -19,7 +19,7 @@ class VerifyCsrfToken extends Middleware
         'paymentwall/*',
         'iyzipay/callback/*',
         'plan-paytab-success/',
-        '/aamarpay*'
-
+        '/aamarpay*',
+        '/login' //Added By Anupam to remove session expiration issue during login
     ];
 }

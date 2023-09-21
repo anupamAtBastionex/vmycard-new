@@ -1344,34 +1344,34 @@ class BusinessController extends Controller
 
     public function getcard($slug)
     {
-
-        if (!\Auth::check()) {
-            // Assuming $slug is a string representing a slug
-            $business = Business::where('slug', $slug)->first();
-
-            if ($business) {
-                // If the model was found, pass it to the visit() method
-                $visit = visitor()->visit($business);
-
-                // Update visitor data if needed
-                \DB::table('visitor')->where('slug', $visit->slug)->update(['created_by' => $business->created_by]);
-            } else {
-                // Handle the case where the model was not found
-            }
-        }
-
+/*
         if (!\Auth::check())
         {
             $visit = visitor()->visit($slug);
             $visit_data = \DB::table('visitor')->where('slug', $visit->slug)->get();
             foreach ($visit_data as $key => $value) {
                 $busi_data = Business::where('slug', $value->slug)->first();
-                if (!is_null($busi_data))
-                {
+                if (!is_null($busi_data)) {
                     $v_data = \DB::table('visitor')->where('id', $value->id)->update(['created_by' => $busi_data->created_by]);
                 }
             }
         }
+*/
+        if (!\Auth::check()) {
+            // Assuming $slug is related to the Business model
+            $busi_data = Business::where('slug', $slug)->first();
+            if ($busi_data) {
+                $visit = visitor()->visit($busi_data);
+
+                $visit_data = \DB::table('visitor')->where('slug', $visit->slug)->get();
+
+                foreach ($visit_data as $value) {
+                    // Update visitor records with business owner information
+                    \DB::table('visitor')->where('id', $value->id)->update(['created_by' => $busi_data->created_by]);
+                }
+            }
+        }
+
 
         $business = Business::where('slug', $slug)->first();
 

@@ -13,13 +13,9 @@ use PhpParser\Node\Stmt\TryCatch;
 
 class CashfreeController extends Controller
 {
-    //
-
     public function paymentConfig()
     {
-
         $payment_setting = Utility::getAdminPaymentSetting();
-
         config(
             [
                 'services.cashfree.key' => isset($payment_setting['cashfree_key']) ? $payment_setting['cashfree_key'] : '',
@@ -29,7 +25,6 @@ class CashfreeController extends Controller
     }
     public function cashfreePaymentStore(Request $request)
     {
-
         $planID = \Illuminate\Support\Facades\Crypt::decrypt($request->plan_id);
         $plan = Plan::find($planID);
         $user = \Auth::user();

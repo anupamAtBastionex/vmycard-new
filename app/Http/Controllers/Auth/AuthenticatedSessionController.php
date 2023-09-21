@@ -3,19 +3,24 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
-use App\Models\User;
-use App\Providers\RouteServiceProvider;
+ use App\Http\Requests\Auth\LoginRequest;
+ use App\Models\User;
+ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Plan;
+ use Illuminate\Support\Facades\Auth;
+ use App\Models\Plan;
 use App\Models\Utility;
-use App\Models\LoginDetail;
+ use App\Models\LoginDetail;
 
 class AuthenticatedSessionController extends Controller
 {
     public function __construct()
     {
+        //echo "noooooooooo".time();
+        //if(isset)
+        //print_r($request);
+        //Auth::guard('web')->logout();
+
         if (!file_exists(storage_path() . "/installed")) {
             header('location:install');
             die;
@@ -38,8 +43,16 @@ class AuthenticatedSessionController extends Controller
      * @param  \App\Http\Requests\Auth\LoginRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(LoginRequest $request)
+
+     public function store_b(LoginRequest $request)
+     {
+        dd("dsfa");
+
+     }
+
+    public function storenn(LoginRequest $request)
     {
+      //  echo "yes";die;
         if (env('RECAPTCHA_MODULE') == 'yes') {
             $validation['g-recaptcha-response'] = 'required|captcha';
         } else {
@@ -48,10 +61,9 @@ class AuthenticatedSessionController extends Controller
         $this->validate($request, $validation);
         $request->authenticate();
 
-        
         $userData=User::where('email', '=', $request->email)->first();
 
-        //Email Verification 
+        //Email Verification
         $setting = Utility::settings();
         if(isset($setting['email_verification']) && $setting['email_verification'] == "on" && $userData->email_verified_at==null){
             try{
@@ -61,8 +73,6 @@ class AuthenticatedSessionController extends Controller
             {
                 $smtp='E-Mail has been not sent due to SMTP configuration';
             }
-
-            
         }
         $request->session()->regenerate();
         $user = Auth::user();
@@ -77,7 +87,7 @@ class AuthenticatedSessionController extends Controller
                         $user->assignplan(1);
 
                         return redirect()->intended(RouteServiceProvider::HOME)->with('error', __('Your plan expired limit is over, please upgrade your plan.'));
-                    }   
+                    }
                 }
             }
         }
@@ -87,7 +97,8 @@ class AuthenticatedSessionController extends Controller
         //$ip = '49.36.83.154'; // This is static ip address
 
         $query = @unserialize(file_get_contents('http://ip-api.com/php/' . $ip));
-        if (isset($query['status']) && $query['status'] != 'fail') {
+        if (isset($query['status']) && $query['status'] != 'fail')
+        {
             $whichbrowser = new \WhichBrowser\Parser($_SERVER['HTTP_USER_AGENT']);
             if ($whichbrowser->device->type == 'bot') {
                 return;
@@ -139,7 +150,7 @@ class AuthenticatedSessionController extends Controller
         \App::setLocale($lang);
 
         return view('auth.forgot-password', compact('lang'));
-        
+
     }
 
     /**
@@ -151,9 +162,7 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request)
     {
         Auth::guard('web')->logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
         return redirect('/');

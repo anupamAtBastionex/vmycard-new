@@ -7,6 +7,10 @@ use App\Models\Contacts;
 use App\Models\Business;
 use App\Models\User;
 use App\Models\Utility;
+use App\Mail\QueryMail;
+use DB;
+use Illuminate\Support\Facades\Mail;
+
 
 class ContactsController extends Controller
 {
@@ -63,7 +67,7 @@ class ContactsController extends Controller
         $business_id = $request->business_id;
         $business = Business::where('id',$business_id)->first();
         //$user = User::where('id',$business->created_by)->first();
-        
+
         $contact = Contacts::create([
             'business_id' => $request->business_id,
             'name' => $request->name,
@@ -74,6 +78,7 @@ class ContactsController extends Controller
         ]);
         return redirect()->back()->with('success',__('Contact Created Successfully.'));
     }
+
 
     /**
      * Display the specified resource.
@@ -188,12 +193,12 @@ class ContactsController extends Controller
         return view('appointments.calender-modal',compact('ad'));
     }
     public function add_note($id){
-        
+
         $contact= Contacts::where('id',$id)->first();
         return view('contacts.add_note',compact('contact'));
     }
     public function note_store($id,Request $request){
-        
+
         if(\Auth::user()->can('edit contact'))
         {
             $contacts = Contacts::where('id',$id)->first();
@@ -207,5 +212,30 @@ class ContactsController extends Controller
         {
             return redirect()->back()->with('error', __('Permission denied.'));
         }
+    }
+
+     /**
+     * Get Request from landing page and save the query
+     * */
+    public function saveQuery(Request $request)
+    {
+        $request->validate([
+                                'first_name' => 'required|string',
+                                'last_name' => 'required|string',
+                                'email' => 'required|email',
+                                'mobile_number' => 'mobile',
+                                'message' => 'string',
+                                'mobile_number' =>'regex:/^[0-9]{10}$/u' // Allow only 10-digit numbers
+                            ]);
+        $user = [
+                    'name' => $request->first_name.' '.$request->last_name,
+                    'email' => $request->email,
+                    'phone' => $request->mobile_number,
+                    'message' => $request->message
+                ];
+       DB::table('site_query')->insert($user);
+       //event(new QueryMail($user));
+       Mail::to('contact@metaspacechain.com')->send(new QueryMail($user));
+       return redirect()->back()->with('success',__('Query Sent Successfully.'));
     }
 }
