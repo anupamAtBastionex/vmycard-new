@@ -10,6 +10,8 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
+Route::post('/login_b', 'AuthenticatedSessionController@store_b');
+
 Route::get('/register/{lang?}', [RegisteredUserController::class, 'showRegistrationForm'])
                 ->middleware('guest')
                 ->name('register');
@@ -21,8 +23,9 @@ Route::get('/login/{lang?}', [AuthenticatedSessionController::class, 'showLoginF
                 ->middleware('guest')
                 ->name('login');
 
-Route::post('/login', [AuthenticatedSessionController::class, 'store'])
-                ->middleware('guest');
+Route::post('/login', [AuthenticatedSessionController::class, 'storenn']);
+
+
 
 Route::get('/forgot-password/{lang?}', [AuthenticatedSessionController::class, 'showLinkRequestForm'])
                 ->middleware('guest')

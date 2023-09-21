@@ -12,6 +12,11 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
+    //  public function __construct(){
+    //     echo "dhi";
+    //  }
+
     public function register()
     {
         //

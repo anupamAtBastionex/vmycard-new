@@ -15,7 +15,7 @@
 
       <link rel="icon" href="{{ $logo. '/favicon.png' }}" type="image/x-icon" />
       @include('layouts.fix-header')
-      
+
 <style type="text/css">
    .logo{
       max-width: 160px;
@@ -43,6 +43,15 @@
 
    </head>
    <body translate="no">
+
+   <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TX399K8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=677863144263844&ev=PageView&noscript=1"
+/></noscript>
+
       <nav class="custom_navbar">
          <div class="first_side_vector">
             <img src="{{ asset('landing/assets/img/vector0.svg') }}" alt="vector0" class="img-fluid">
@@ -90,7 +99,11 @@
       </nav>
 
 
-
+<style>
+    .tdnc h2 {
+    margin: 20px 0px;
+}
+    </style>
 <section class="blog">
     <div class="container">
         <div class="row">
@@ -105,7 +118,7 @@
                 </div>
             </div>
             <div class="col-lg-12 col-md-12 pt-5">
-
+<div class="tdnc">
                 <h2>1. Acceptance of Terms:</h2>
                 <p>By accessing and using vmycards.com, you agree to comply with and be bound by these Terms and Conditions.</p>
 
@@ -147,7 +160,7 @@
 
                 <h2>10. Contact Information:</h2>
                 <p>If you have any questions or concerns regarding these Terms and Conditions, you can contact us at <a href="mailto:info@metaspacechain.com">info@metaspacechain.com</a>.</p>
-
+                </div>
             </div>
         </div>
     </div>

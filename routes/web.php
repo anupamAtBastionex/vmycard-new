@@ -56,6 +56,8 @@ use App\Http\Controllers\TccController;
 
 require __DIR__ . '/auth.php';
 
+// Route::post('/login_b1', 'AuthenticatedSessionController@store_b');
+Route::post('/login_b1', [AuthenticatedSessionController::class, 'store_b1']);
 
 Route::get('/', [HomeController::class, 'landingPage'])->middleware('XSS')->name('home');
 Route::any('cookie_consent', [SystemController::class, 'CookieConsent'])->name('cookie-consent');
@@ -64,6 +66,7 @@ Route::get('/tc', [TccController::class, 'index'])->middleware('XSS')->name('tcc
 Route::get('/refund', [TccController::class, 'refund'])->middleware('XSS')->name('refund');
 Route::get('/privacy-policy', [TccController::class, 'privacy'])->middleware('XSS')->name('privacy.policy');
 Route::get('/faqs', [TccController::class, 'faqs'])->middleware('XSS')->name('faqs');
+Route::get('/about', [TccController::class, 'about'])->middleware('XSS')->name('about');
 
 Route::group(['middleware' => ['verified']], function () {
 
@@ -325,8 +328,9 @@ Route::group(['middleware' => ['verified']], function () {
     Route::post('disable-language', [LanguageController::class, 'disableLang'])->name('disablelanguage')->middleware(['auth', 'XSS']);
 });
 
- Route::get('/{slug}', [BusinessController::class, 'getcard']);
+Route::get('/{slug}', [BusinessController::class, 'getcard']);
 Route::get('/download/{slug}', [BusinessController::class, 'getVcardDownload'])->name('bussiness.save');
 Route::post('appoinment/make-appointment', [AppointmentDeatailController::class, 'store'])->middleware('XSS')->name('appoinment.store');
 Route::post('/contacts/store/', [ContactsController::class, 'store'])->name('contacts.store');
+Route::post('/submit-query', [ContactsController::class, 'saveQuery'])->name('submit.query');
 

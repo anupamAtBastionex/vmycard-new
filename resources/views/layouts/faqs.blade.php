@@ -15,7 +15,7 @@
 
       <link rel="icon" href="{{ $logo. '/favicon.png' }}" type="image/x-icon" />
       @include('layouts.fix-header')
-      
+
 <style type="text/css">
    .logo{
       max-width: 160px;
@@ -37,11 +37,21 @@
 .blog h2{
     font-size:1.25rem;
 }
-
+.accordion-item {
+    background: #edf2f7;
+}
 </style>
 
    </head>
    <body translate="no">
+    
+   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TX399K8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=677863144263844&ev=PageView&noscript=1"
+/></noscript>
+
       <nav class="custom_navbar">
          <div class="first_side_vector">
             <img src="{{ asset('landing/assets/img/vector0.svg') }}" alt="vector0" class="img-fluid">
@@ -90,72 +100,122 @@
 
 
 
-<section class="blog">
-    <div class="container">
-        <div class="row align-items-center">
+
+<section class="faq py-5 " id="faqs">
+  <div class="container">
+  <div class="row align-items-center mb-5">
             <div class="col-lg-12 col-md-12 m-auto">
                 <div class="blog-section">
                     <div class="blog-heading text-center">
                     <h3>
-                    Frequently
-                        <span>  Asked  Questions</span>
+                    VmyCards
+                        <span> (FAQ's)</span>
                     </h3>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12 col-md-12 pt-5">
-            <ol class="faqui">
-                <li>
-                    <h4>What Is A Digital Business Card?</h4>
-                    <p><b>Ans.-</b> It is a digital card for sending contact details electronically, replacing outdated visiting cards. It is a personalized, interactive digital card that simplifies networking for you. </p>
-                </li>
 
-                <li>
-                    <h4>What Is A vMyCards Business Card?
-                </h4>
-                    <p><b>Ans.-</b> It is designed for professionals who attend meetings, tradeshows, or seminars to quickly share their business details without the hassle of manual sharing.</p>
-                </li>
-                <li>
-                    <h4>Tell Us How vMyCards Works?
-                </h4>
-                    <p><b>Ans.-</b> You can start by taking a 30-day free trial that lets you create, design, and share the business information you want others to see with the help of powerful technologies like NFC.
-                </p>
-                </li>
-                <li>
-                    <h4>How Do I Share My Digital Business Card?
-                </h4>
-                    <p><b>Ans.-</b> Sharing your digital business card with vMyCards is simple; just tap your card on the back of a phone or access it through a QR code. But first, you need to sign up and create an account with us.
-                </p>
-                </li>
-                <li>
-                    <h4> How Many Digital Business Cards Can I Create?
-                </h4>
-                    <p><b>Ans.-</b> With vMyCards, you can create as many digital business cards as you need to suit various networking and business situations.
-                </p>
-                </li>
-                <li>
-                    <h4>Will My Digital Business Card Be Mobile Friendly?
-                </h4>
-                    <p><b>Ans.-</b> Yes, vMyCards ensures your digital business card is mobile-friendly, making it accessible and user-friendly on smartphones.</p>
-                </li>
-                <li>
-                    <h4> Does vMyCards Require A Subscription?
-                </h4>
-                    <p><b>Ans.-</b> vMyCards offers unparalleled deals on pricing at a mere 30 Rupees per month! If this isn't convincing enough, you get the card for free. </p>
-                </li>
-                </ul>
 
-                </div>
+
+        <div class="accordion accordion-flush row" id="accordionFlushExample">
+
+          <div class="col-12 col-lg-6">
+          <div class="accordion-item">
+            <h2 class="accordion-header show" id="flush-headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sa" aria-expanded="false" aria-controls="flush-collapseOne">
+                What Is A Digital Business Card?
+
+              </button>
+            </h2>
+            <div id="sa" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">It is a digital card for sending contact details electronically, replacing outdated visiting cards. It is a personalized, interactive digital card that simplifies networking for you.
+              </div>
             </div>
-    </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sb" aria-expanded="false" aria-controls="flush-collapseTwo">
+                What Is A Vmycards Business Card?
+
+              </button>
+            </h2>
+            <div id="sb" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">It is designed for busy professionals who attend meetings, tradeshows, or seminars to quickly share their business details without the hassle of manual sharing.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sc" aria-expanded="false" aria-controls="flush-collapseThree">
+                Tell Us How vMyCards Works?
+
+              </button>
+            </h2>
+            <div id="sc" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">Vmycards lets you create, share, and update digital business cards via their user-friendly platform with the help of powerful technologies like NFC.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                How Many Digital Business Cards Can I Create?
+              </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">With Vmycards, you can create as many digital business cards as you need to suit various networking and business situations.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6">
+<div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                Will My Digital Business Card Be Mobile Friendly?
+              </button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">Yes, Vmycards ensures your digital business card is mobile-friendly, making it accessible and user-friendly on smartphones.</div>
+          </div>
+          </div>
+
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                How do I Share my Digital Business Card?
+              </button>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">Sharing your digital business card with Vmycards is simple; just tap your card on the back of a phone or access it through a QR code. But first, you need to sign up and create an account with us.
+              </div>
+          </div>
+
+      </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q7" aria-expanded="false" aria-controls="q7">
+                Does Vmycards Require A Subscription?
+
+              </button>
+            </h2>
+            <div id="q7" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">Vmycards offers an astonishing deal, with unparalleled pricing at a mere 30 Rupees per month! If this isn't convincing enough, you get the card for free.
+
+              </div>
+          </div>
+        </div>
+</div>
+        </div>
+      </div>
 
 </section>
 <section>
 @include('layouts.fix-footer')
 </section>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
       <script
          src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
       <script id="rendered-js">

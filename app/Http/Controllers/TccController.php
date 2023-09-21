@@ -27,4 +27,10 @@ class TccController extends Controller
     {
         return view('layouts.faqs');
     }
+
+    public function about()
+    {
+        return view('layouts.about');
+    }
+
 }

@@ -1118,28 +1118,30 @@ class SystemController extends Controller
                 //$ip = '49.36.83.154';
                 $query = @unserialize(file_get_contents('http://ip-api.com/php/' . $ip));
 
+                print_r($query);die;
+
 
                 $date = (new \DateTime())->format('Y-m-d');
                 $time = (new \DateTime())->format('H:i:s') . ' UTC';
 
 
-                $new_line = implode(',', [
-                    $ip,
-                    $date,
-                    $time,
-                    json_encode($request['cookie']),
-                    $device_type,
-                    $browser_language,
-                    $browser_name,
-                    $os_name,
-                    isset($query) ? $query['country'] : '', isset($query) ? $query['region'] : '', isset($query) ? $query['regionName'] : '', isset($query) ? $query['city'] : '', isset($query) ? $query['zip'] : '', isset($query) ? $query['lat'] : '', isset($query) ? $query['lon'] : ''
-                ]);
-                if (!file_exists(storage_path() . '/uploads/sample/data.csv')) {
+                // $new_line = implode(',', [
+                //     $ip,
+                //     $date,
+                //     $time,
+                //     json_encode($request['cookie']),
+                //     $device_type,
+                //     $browser_language,
+                //     $browser_name,
+                //     $os_name,
+                //     isset($query) ? $query['country'] : '', isset($query) ? $query['region'] : '', isset($query) ? $query['regionName'] : '', isset($query) ? $query['city'] : '', isset($query) ? $query['zip'] : '', isset($query) ? $query['lat'] : '', isset($query) ? $query['lon'] : ''
+                // ]);
+                // if (!file_exists(storage_path() . '/uploads/sample/data.csv')) {
 
-                    $first_line = 'IP,Date,Time,Accepted cookies,Device type,Browser language,Browser name,OS Name,Country,Region,RegionName,City,Zipcode,Lat,Lon';
-                    file_put_contents(storage_path() . '/uploads/sample/data.csv', $first_line . PHP_EOL, FILE_APPEND | LOCK_EX);
-                }
-                file_put_contents(storage_path() . '/uploads/sample/data.csv', $new_line . PHP_EOL, FILE_APPEND | LOCK_EX);
+                //     $first_line = 'IP,Date,Time,Accepted cookies,Device type,Browser language,Browser name,OS Name,Country,Region,RegionName,City,Zipcode,Lat,Lon';
+                //     file_put_contents(storage_path() . '/uploads/sample/data.csv', $first_line . PHP_EOL, FILE_APPEND | LOCK_EX);
+                // }
+              //  file_put_contents(storage_path() . '/uploads/sample/data.csv', $new_line . PHP_EOL, FILE_APPEND | LOCK_EX);
 
                 return response()->json('success');
             }

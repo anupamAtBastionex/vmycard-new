@@ -36,7 +36,7 @@
 
 @section('content')
     <!-- [ auth-signup ] start -->
-    
+
     <div class="card">
         <div class="row align-items-center">
             <div class="col-xl-6">
@@ -44,7 +44,10 @@
                     <div class="">
                         <h2 class="mb-3 f-w-600">{{ __('Login') }}</h2>
                     </div>
-                    {{ Form::open(['route' => 'login', 'method' => 'post', 'id' => 'loginForm', 'class' => 'login-form']) }}
+                    {{-- Form::open(['route' => 'login', 'method' => 'post', 'id' => 'loginForm', 'class' => 'login-form']) --}}
+                <form class="login-form" method="post" id="loginForm" action="{{ route('login') }}">
+                    @csrf
+
                     <div class="">
                         <div class="form-group mb-3">
                             <label class="form-label">{{ __('Email') }}</label>
@@ -77,6 +80,7 @@
                             </div>
                         @endif
 
+
                         @if (env('RECAPTCHA_MODULE') == 'yes')
                             <div class="form-group col-lg-12 col-md-12 mt-3">
                                 {!! NoCaptcha::display() !!}
@@ -87,16 +91,20 @@
                                 @enderror
                             </div>
                         @endif
+
                         <div class="d-grid">
                             {{ Form::submit(__('Login'), ['class' => 'btn btn-primary btn-block mt-2', 'id' => 'saveBtn']) }}
                         </div>
-                        {{ Form::close() }}
+
+                        {{-- Form::close() --}}
+                        </div>
+                        </form>
                         @if (Utility::getValByName('signup_button') == 'on')
                             <p class="my-4 text-center">{{ __("Don't have an account?") }}
                                 <a href="{{ url('register') }}" class="my-4 text-primary">{{ __('Register') }}</a>
                             </p>
                         @endif
-                    </div>
+
 
                 </div>
             </div>

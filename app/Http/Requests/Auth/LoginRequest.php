@@ -21,6 +21,10 @@ class LoginRequest extends FormRequest
         return true;
     }
 
+    public function __construct()
+    {
+       /// echo "ues";die;
+    }
     /**
      * Get the validation rules that apply to the request.
      *

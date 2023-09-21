@@ -36,7 +36,7 @@
 
 <?php $__env->startSection('content'); ?>
     <!-- [ auth-signup ] start -->
-    
+
     <div class="card">
         <div class="row align-items-center">
             <div class="col-xl-6">
@@ -44,7 +44,9 @@
                     <div class="">
                         <h2 class="mb-3 f-w-600"><?php echo e(__('Login')); ?></h2>
                     </div>
-                    <?php echo e(Form::open(['route' => 'login', 'method' => 'post', 'id' => 'loginForm', 'class' => 'login-form'])); ?>
+                    
+                <form class="login-form" method="post" id="loginForm" action="<?php echo e(route('login')); ?>">
+                    <?php echo csrf_field(); ?>
 
                     <div class="">
                         <div class="form-group mb-3">
@@ -94,6 +96,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                         <?php endif; ?>
 
+
                         <?php if(env('RECAPTCHA_MODULE') == 'yes'): ?>
                             <div class="form-group col-lg-12 col-md-12 mt-3">
                                 <?php echo NoCaptcha::display(); ?>
@@ -112,19 +115,22 @@ endif;
 unset($__errorArgs, $__bag); ?>
                             </div>
                         <?php endif; ?>
+
                         <div class="d-grid">
                             <?php echo e(Form::submit(__('Login'), ['class' => 'btn btn-primary btn-block mt-2', 'id' => 'saveBtn'])); ?>
 
                         </div>
-                        <?php echo e(Form::close()); ?>
 
+                        
+                        </div>
+                        </form>
                         <?php if(Utility::getValByName('signup_button') == 'on'): ?>
                             <p class="my-4 text-center"><?php echo e(__("Don't have an account?")); ?>
 
                                 <a href="<?php echo e(url('register')); ?>" class="my-4 text-primary"><?php echo e(__('Register')); ?></a>
                             </p>
                         <?php endif; ?>
-                    </div>
+
 
                 </div>
             </div>

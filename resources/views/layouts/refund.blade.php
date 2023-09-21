@@ -41,6 +41,14 @@
 
    </head>
    <body translate="no">
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TX399K8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=677863144263844&ev=PageView&noscript=1"
+/></noscript>
+
       <nav class="custom_navbar">
          <div class="first_side_vector">
             <img src="{{ asset('landing/assets/img/vector0.svg') }}" alt="vector0" class="img-fluid">

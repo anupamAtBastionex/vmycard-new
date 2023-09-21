@@ -14,7 +14,7 @@
       <title>{{(Utility::getValByName('title_text')) ? Utility::getValByName('title_text') : config('app.name', 'vCardGo SaaS')}}</title>
 
       <link rel="icon" href="{{ $logo. '/favicon.png' }}" type="image/x-icon" />
-      
+
 @include('layouts.fix-header')
 <style type="text/css">
    .logo{
@@ -38,10 +38,34 @@
     font-size: 17px;
 }
 
+
+a.loginbtn {
+    background: transparent !important;
+    border: 1px solid #000 !important;
+    color: #000 !important;
+}
+
+a.regbtn{ background: black !important;
+    border: 1px solid #000000 !important;
+}
 </style>
+
+<!-- End Meta Pixel Code -->
+
+
+<!-- Additionally, paste this code immediately after the opening <body> tag: -->
+
 
    </head>
    <body translate="no">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TX399K8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=677863144263844&ev=PageView&noscript=1"
+/></noscript>
+
       <nav class="custom_navbar">
          <div class="first_side_vector">
             <img src="{{ asset('landing/assets/img/vector0.svg') }}" alt="vector0" class="img-fluid">
@@ -70,12 +94,13 @@
                   </div>
                   <ul class="nav-links">
                      <li><a href="{{ url('/') }}">Overview</a></li>
+                     <!-- <li><a href="{{ url('/about') }}">About Us</a></li> -->
                      <li><a href="#functions">Functions</a></li>
                      <li><a href="#">Pricing</a></li>
                      <li><a href="#contact">Contact</a></li>
-                     <li class="try-btn "><a href="{{ route('login') }}">{{__('Log in')}}</a></li>
+                     <li class="try-btn "><a class="loginbtn" href="{{ route('login') }}">{{__('Log in')}}</a></li>
                      @if(Utility::getValByName('signup_button') == 'on')
-                     <li class="try-btn"><a href="{{ route('register') }}">{{__('Register')}}</a></li>
+                     <li class="try-btn "><a class="regbtn" href="{{ route('register') }}">{{__('Register')}}</a></li>
                      @endif
                   </ul>
                   <div class="burger">
@@ -493,25 +518,23 @@ ul.imgsmgroup li {
           <div class="row justify-content-center pb-5">
             <div class="col-12 col-lg-6">
                 <div class="contact-form">
-                <form method="POST" action="" accept-charset="UTF-8" class="row g-3"><input name="_token" type="hidden" value="ajkgJl0Kdfrc8hfUIuLYIZ5BsTCZo0RhvYZNouLi">
+                <form method="POST" action="{{ route('submit.query') }}" accept-charset="UTF-8" class="row g-3">
+                    @csrf
                     <div class="col-md-6">
                         <input type="text" class="form-control clear_string" placeholder="First Name" name="first_name" value="" required="">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" class="form-control clear_string" placeholder="Last Name" name="last_name" value="" required="">
+                        <input type="text" class="form-control clear_string" placeholder="Last Name" name="last_name" value="" >
                     </div>
                     <div class="col-12">
                         <input type="text" class="form-control" placeholder="Email" name="email" value="" required="">
                     </div>
                     <div class="col-12">
-                        <input type="text" class="form-control clear_string" maxlength="10" minlength="10" placeholder="Mobile Number" name="mobile_number" value="" required="">
+                        <input type="text" class="form-control clear_string" maxlength="10" minlength="10" placeholder="Mobile Number" name="mobile_number" value="">
                     </div>
                     <div class="col-12">
-                        <textarea class="form-control clear_string" rows="3" placeholder="Message*" required="" name="message"></textarea>
+                        <textarea class="form-control clear_string" rows="3" placeholder="Message" name="message"></textarea>
                     </div>
-
-                    <input type="hidden" name="query_type" value="0">
-                    <input type="hidden" name="contact_us" value="0">
                     <div class="col-12">
                         <button type="submit" class="btn btn-submitform">Submit</button>
                     </div>

@@ -55,4 +55,16 @@ class Handler extends ExceptionHandler
             }
         });
     }
+
+    // public function render($request, Exception $exception)
+    // {
+    //     if($exception instanceof TokenMismatchException)
+    //     {
+    //         return redirect()
+    //                 ->back()
+    //                 ->with('Your Session Has Expried Please Login Again');
+    //     }
+    //     return parent::render($request, $exception);
+    // }
+
 }
