@@ -1,5 +1,8 @@
 <?php //print_r($_SERVER);
 $SER=$_SERVER['HTTP_ORIGIN'];
+$SER=env('APP_URL');
+ 
+
 ?>
 <style>
      .postion-r {
@@ -170,7 +173,7 @@ li.qrcode img {
         <div class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
-                    <img src="{{ $SER }}/assets/card-images/logo2.png" >
+                    <img src="{{ $logo_white }}" width="150px"  >
                 </div>
                 <div class="flip-card-back">
                     <ul class="info">

@@ -68,12 +68,23 @@ class PhysicalController extends Controller
         {
             $qr_detail = \App\Models\Businessqr::where('business_id', $businessData->id)->first();
         }
+
+
+        $SER=env('APP_URL');
+        if($business->logo==''){
+            $logo_p=$SER."/assets/card-images/logo2.png";
+        }else{
+            $logo_p=$SER."/storage/card_logo/$business->logo";
+        }
+
         $data = [
             'title' => $business->title,
             'designation' => $business->designation,
             'qr_detail' => $qr_detail,
             'businessData'=> $businessData,
-            'plan'=>$plan
+            'plan'=>$plan,
+            'logo_white'=>$logo_p,
+            'logo_black'=>$logo_p
 
         ];
         return $data;

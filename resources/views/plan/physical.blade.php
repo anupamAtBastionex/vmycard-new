@@ -2,7 +2,7 @@
 @php
     $dir = asset(Storage::url('uploads/plan'));
     $qr_path = \App\Models\Utility::get_file('qrcode');
-    $SER='http://localhost/vmy_anu1/vmycard-new/';   //$_SERVER['HTTP_ORIGIN'];
+    $SER=env('APP_URL');   //$_SERVER['HTTP_ORIGIN'];
 @endphp
 @section('page-title')
     {{ __('Plans') }}
@@ -220,7 +220,7 @@ img.spingif {
                     <div class="flip-card">
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
-                                <img src="{{ $SER }}/assets/card-images/logo2.png" >
+                                <img src="{{ $logo_white }}" width="150px" >
                             </div>
                             <div class="flip-card-back">
                                 <ul class="info">
