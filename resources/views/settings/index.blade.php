@@ -228,7 +228,7 @@
                                             {{ Form::label('default_language', __('Default Language'), ['class' => 'form-label']) }}
                                             <div class="changeLanguage">
                                                 <select name="company_default_language" id="company_default_language"
-                                                    class="form-control select2">
+                                                    class="form-control select2  vvdd">
                                                     @foreach (App\Models\Utility::languages() as $code => $language)
                                                         <option @if($lang == $code) selected @endif
                                                             value="{{ $code }}">
@@ -407,7 +407,7 @@
                                         <a href="#" class="btn btn-sm btn-primary btn-icon m-1" data-bs-target="#exampleModal"
                                             data-url="{{ route('webhook.create') }}" data-bs-whatever="{{ __('Create Webhook') }}" data-bs-toggle="modal">
                                             <span class="text-white">
-                                                <i class="ti ti-plus text-white" data-bs-toggle="tooltip" data-bs-original-title="{{ __('Create Webhook') }}"></i></span>
+                                                <i class="ti ti-plus text-white fff55t" data-bs-toggle="tooltip" data-bs-original-title="{{ __('Create Webhook') }}"></i></span>
                                         </a>
                                     </div>
                                 </div>

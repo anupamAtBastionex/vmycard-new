@@ -77,10 +77,14 @@ Route::get('/about', [TccController::class, 'about'])->middleware('XSS')->name('
 Route::group(['middleware' => ['verified']], function () {
 
     Route::get('/physical_card', [PhysicalController::class, 'index'])->middleware('XSS', 'auth')->name('physical_card.index');
+    Route::get('/physical_card_status/{id?}', [PhysicalController::class, 'action_popup'])->middleware('XSS', 'auth')->name('physical_card.action_popup');
+
     // Route::post('/physical_card', [PhysicalController::class, 'index'])->middleware('XSS', 'auth')->name('physical_card.index');
 
     Route::post('/get_dyn_phycard', [PhysicalController::class, 'getCont'])->middleware('XSS', 'auth');
     Route::post('/card_request', [PhysicalController::class, 'card_request'])->middleware('XSS', 'auth');
+    Route::post('/pstatus_store', [PhysicalController::class, 'pstatus_store'])->middleware('XSS', 'auth')->name('physical_card.pstatus_store');
+
 
 
     Route::get('/home', [HomeController::class, 'index'])->middleware('XSS', 'auth', 'CheckPlan')->name('home');

@@ -1,10 +1,10 @@
-{{Form::open(array('route'=>'pixel.store','method'=>'post'))}}
+{{Form::open(array('route'=>'physical_card.pstatus_store','method'=>'post'))}}
 <div class="card">
     <div class="row">
         <div class="col-12">
             <div class="form-group col-md-12">
-                {{ Form::label('platform', __('Platform'),['class'=>'form-label']) }}
-                {!! Form::select('platform', $pixals_platforms, null,array('class' => 'form-control select2 dddsscc','required'=>'required')) !!}
+                {{ Form::label('platform', __('Status'),['class'=>'form-label']) }}
+                {!! Form::select('p_status', $p_status, null,array('class' => 'form-control select2 p_status','required'=>'required')) !!}
                 @error('platform')
                 <small class="invalid-role" role="alert">
                     <strong class="text-danger">{{ $message }}</strong>
@@ -14,8 +14,8 @@
         </div>
         <div class="col-12">
             <div class="form-group col-md-12">
-                {{Form::label('pixel_id',__('Pixel ID'))}}
-                {{Form::text('pixel_id',null,array('class'=>'form-control','placeholder'=>__('Enter Pixel ID')))}}
+                {{Form::label('pixel_id',__('Comment'))}}
+                {{Form::text('p_comment',null,array('class'=>'form-control mt-2','placeholder'=>__('Enter Comment')))}}
                 @error('pixel_id')
                 <span class="invalid-name" role="alert">
                             <strong class="text-danger">{{ $message }}</strong>
@@ -23,11 +23,11 @@
                 @enderror
             </div>
         </div>
-        <input type="hidden" name="business_id" value="{{ $business_id }}">
+        <input type="hidden" name="p_id" value="{{ $p_id }}">
     </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Cancel')}}</button>
-    {{Form::submit(__('Create'),array('class'=>'btn btn-primary'))}}
+    {{Form::submit(__('Update'),array('class'=>'btn btn-primary'))}}
 </div>
 {{Form::close()}}

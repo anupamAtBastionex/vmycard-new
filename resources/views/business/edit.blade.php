@@ -2086,7 +2086,7 @@
                                                         <a href="#" class="btn btn-sm btn-primary btn-icon m-1" data-bs-target="#exampleModal"
                                                             data-url="{{ route('pixel.create',$business->id) }}" data-bs-whatever="{{ __('Create Pixel') }}" data-bs-toggle="modal">
                                                             <span class="text-white">
-                                                                <i class="ti ti-plus text-white"></i></span>
+                                                                <i class="ti ti-plus text-white fff22"></i></span>
                                                         </a>
                                                     </div>
                                                 @endcan

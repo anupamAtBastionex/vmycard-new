@@ -536,7 +536,7 @@
                                                     {{ Form::label('default_language', __('Default Language'), ['class' => 'form-label']) }}
                                                     <div class="changeLanguage">
                                                         <select name="default_language" id="default_language"
-                                                            class="form-control select2">
+                                                            class="form-control select2 dccv">
                                                             @foreach (App\Models\Utility::languages() as $code => $language)
                                                                 <option @if ($lang == $code) selected @endif
                                                                     value="{{ $code }}">

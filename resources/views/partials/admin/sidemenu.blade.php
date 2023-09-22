@@ -95,9 +95,9 @@
                     </a>
                     <ul class="dash-submenu">
 
-                            <li class="dash-item {{ (Request::segment(1) == 'sadmin_request_cards')?'active2':''}}">
+                            <!-- <li class="dash-item {{ (Request::segment(1) == 'sadmin_request_cards')?'active2':''}}">
                               <a href="{{route('physical.sadmin_view_request_order')}}" class="dash-link"> <span class="dash-mtext">Admin Requested Order</span></a>
-                            </li>
+                            </li> -->
 
                             <li class="dash-item {{ (Request::segment(1) == 'request_cards')?'active2':''}}">
                                 <a href="{{route('physical.view_request_order')}}" class="dash-link"> <span class="dash-mtext">Requested Order</span></a>

@@ -225,7 +225,7 @@ img.spingif {
                             </div>
                             <div class="flip-card-back">
                                 <ul class="info">
-                                    <li class="qrcode">  <div class="shareqrcode">-</div> </li>
+                                    <li class="qrcode">  <div class="shareqrcode">-qqqqqqqqqqqq</div> </li>
                                     <li class="name-crdowner" style="color:#fff">{{ $title }}</li>
                                     <li class="degnition">{{ $designation }}</li>
                                 </ul>
@@ -415,7 +415,6 @@ input[type="radio"]:checked + label img {
                 @if ($businessData)
                     var slug = '{{ $businessData->slug }}';
                     var url_link = `{{ url('/') }}/${slug}`;
-
                     $(`.qr-link`).text(url_link);
                     @if (isset($plan->enable_qr_code) && $plan->enable_qr_code == 'on')
                         var foreground_color =

@@ -14,30 +14,7 @@
       <title>{{(Utility::getValByName('title_text')) ? Utility::getValByName('title_text') : config('app.name', 'vCardGo SaaS')}}</title>
 
       <link rel="icon" href="{{ $logo. '/favicon.png' }}" type="image/x-icon" />
-<<<<<<< HEAD
-
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-      <link rel="stylesheet" href="{{ asset('landing/assets/css/style.css') }}">
-      <!-- Stylesheets -->
-      <!-- <link rel="stylesheet" href="./assets/css/docs.theme.min.css"> -->
-      <!-- Owl Stylesheets -->
-      <link rel="stylesheet" href="{{ asset('landing/assets/css/owl.carousel.min.css') }}">
-      <link rel="stylesheet" href="{{ asset('landing/assets/css/owl.theme.default.min.css') }}">
-      <script src="{{ asset('landing/assets/js/jquery.min.js') }}"></script>
-      <script src="{{ asset('landing/assets/js/owl.carousel.js') }}"></script>
-
-      @if ($setting['SITE_RTL'] == 'on')
-        <link rel="stylesheet" href="{{ asset('assets/css/style-rtl.css') }}">
-    @endif
-    @if (isset($setting['cust_darklayout']) && $setting['cust_darklayout'] == 'on')
-        <link rel="stylesheet" href="{{ asset('assets/css/style-dark.css') }}">
-    @else
-        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    @endif
-    <link rel="stylesheet" href="{{ asset('custom/css/custom.css') }}">
-=======
       @include('layouts.fix-header')
->>>>>>> 73e9784e280d2b870a73c4de85d5c8395d7efaaa
 
 <style type="text/css">
    .logo{

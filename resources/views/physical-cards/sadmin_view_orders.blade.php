@@ -27,11 +27,11 @@
                 <table class="table" id="pc-dt-export">
                     <thead>
                         <tr>
-                            <th>{{__('Date')}}</th>
                             <th>{{__('Name')}}</th>
+                            <th>{{__('Business Name')}}</th>
                             <th>{{__('Designation')}}</th>
-                            <th>{{__('Email')}}</th>
-                            <th>{{__('Phone')}}</th>
+                            <th>{{__('Order Date')}}</th>
+                            <th>{{__('Comment')}}</th>
                             <th>{{__('Status')}}</th>
                             <th id="ignore">{{__('Action')}}</th>
                         </tr>
@@ -39,19 +39,35 @@
                     <tbody>
                         @foreach($card_request_deatails as $val)
                             <tr>
-                                <td>{{ $val->ordered_at }}</td>
-                                <td>{{ $val->name }}</td>
+                                <td>{{ getUserName($val->user_id); }}</td>
+                                <td>{{ getBusinessName($val->business_id); }}</td>
                                 <td>{{ $val->designation }}</td>
-                                <td>{{ $val->email }}</td>
-                                <td>{{ $val->phone }}</td>
-                                @php
-                                    $status = ($val->status == 1) ? 'Active' : (($val->status == 2) ? 'Pending' : '');
+                                <td>{{ dmy($val->ordered_at) }}</td>
+                                <td>{{ $val->comment }}</td>
 
+                                @php
+                                    $status =  getStatus($val->status);
+                                    $st_class =  getStClass($val->status);
                                 @endphp
-                                <td><span class="badge bg-warning p-2 px-3 rounded">{{ ucFirst($status) }}</span></td>
+                                <td><span class="badge bg-{{ $st_class }} p-2 px-3 rounded">{{ ucFirst($status) }}</span></td>
                                 <div class="row float-end">
                                     <td class="d-flex">
-                                         -
+            <div class="d-flex align-items-center justify-content-between justify-content-md-end" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-original-title="Action">
+            <a href="#" class="btn btn-sm btn-primary btn-icon m-1" data-bs-target="#exampleModal" data-url="{{ route('physical_card.action_popup',$val->id) }}"  data-url="" data-bs-whatever="Action" data-bs-toggle="modal">
+                                                            <span class="text-white">
+                                                                 Change Status</span>
+                                                        </a>
+                                                    </div>
+
+
+                                                    <div class="d-flex align-items-center justify-content-between justify-content-md-end"
+                                                    data-bs-placement="top" data-bs-toggle="tooltip" data-bs-original-title="Action">
+                                      <a href="#" class="btn btn-sm btn-secondary btn-icon m-1" data-bs-target="#exampleModal" data-url="{{ route('physical_card.action_popup') }}"
+                                                            data-url="" data-bs-whatever="Action" data-bs-toggle="modal">
+                                                            <span class="text-white">
+                                                                 View</span>
+                                                        </a>
+                                                    </div>
                                     </td>
                                 </div>
                             </tr>

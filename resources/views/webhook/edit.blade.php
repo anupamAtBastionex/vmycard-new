@@ -2,7 +2,7 @@
 <div class="row">
     <div class="form-group col-md-12">
         {{ Form::label('Module', __('Module'), ['class' => 'form-label']) }}
-        <select name="module" class="form-control select2"
+        <select name="module" class="form-control select2 sss1"
             id="module" >
             @foreach ($module as $key => $value)
              <option value = "{{ $key }}" {{ $key == $webhook->module ? 'selected' : '' }}>{{__($value)}}</option>
@@ -16,7 +16,7 @@
     </div>
     <div class="form-group col-md-12">
         {{ Form::label('Method', __('Method'), ['class' => 'form-label']) }}
-        <select name="method" class="form-control select2"
+        <select name="method" class="form-control select2 ddd"
             id="method" >
             @foreach ($method as $key => $value)
              <option value = "{{ $key }}" {{ $key == $webhook->method ? 'selected' : '' }}>{{__($value)}}</option>
