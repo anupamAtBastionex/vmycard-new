@@ -80,6 +80,7 @@ Route::group(['middleware' => ['verified']], function () {
     // Route::post('/physical_card', [PhysicalController::class, 'index'])->middleware('XSS', 'auth')->name('physical_card.index');
 
     Route::post('/get_dyn_phycard', [PhysicalController::class, 'getCont'])->middleware('XSS', 'auth');
+    Route::post('/card_request', [PhysicalController::class, 'card_request'])->middleware('XSS', 'auth');
 
 
     Route::get('/home', [HomeController::class, 'index'])->middleware('XSS', 'auth', 'CheckPlan')->name('home');
@@ -105,7 +106,12 @@ Route::group(['middleware' => ['verified']], function () {
 
         Route::resource('appointments', AppointmentDeatailController::class);
         Route::get('appoinments/{slug?}', [AppointmentDeatailController::class, 'index'])->name('appointments.index');
+        
+        Route::get('request_cards', [PhysicalController::class, 'view_request_order'])->name('physical.view_request_order');
+        Route::get('request_cards/{slug?}', [PhysicalController::class, 'view_request_order'])->name('physical.view_request_order');
 
+        Route::get('sadmin_request_cards', [PhysicalController::class, 'sadmin_view_request_order'])->name('physical.sadmin_view_request_order');
+        Route::get('sadmin_request_cards/{slug?}', [PhysicalController::class, 'sadmin_view_request_order'])->name('physical.sadmin_view_request_order');
 
         Route::resource('users', UserController::class);
         Route::get('user/{id}/plan', [UserController::class, 'upgradePlan'])->name('plan.upgrade')->middleware('XSS');

@@ -72,8 +72,6 @@ li.degnition {
     font-weight: bold;
     color:#fff;
     position: absolute;
-    top: 134px;
-    left: 83px;
 }
 
 li.name-crdowner {
@@ -147,7 +145,6 @@ li.qrcode img {
 
 
 .flip-card-back {
-  background-color: #2980b9;
   color: white;
   transform: rotateY(180deg);
   background-image: url("{{ $SER }}/assets/card-images/3BackBlank.png") !important;

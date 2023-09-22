@@ -68,7 +68,7 @@
                     aria-controls="navbar-getting-started"><span class="dash-micon"><i
                             class="ti ti-users"></i></span><span class="dash-mtext">{{ __('Staff') }}</span><span
                         class="dash-arrow"><i data-feather="chevron-right"></i></span>
-                </a>
+                    </a>
                     <ul class="dash-submenu">
                         @if (Gate::check('manage user'))
                             <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'users' ? 'active open' : '' }}">
@@ -85,11 +85,32 @@
                     </ul>
                 </li>
 
-                <li class="dash-item {{ (Request::segment(1) == 'physical_card')?'active':''}}">
-                        <a href="{{route('physical_card.index')}}" class="dash-link"><span class="dash-micon"><i
-                                    class="ti ti-calendar-time"></i></span><span class="dash-mtext">Physical Card</span></a>
+                <li class="dash-item dash-hasmenu">
+                    <a class="dash-link {{ Request::segment(1) == 'employee' || Request::segment(1) == 'client' ? 'active' : '' }}"
+                    data-toggle="collapse" role="button"
+                    aria-expanded="{{ Request::segment(1) == 'employee' || Request::segment(1) == 'client' ? 'true' : 'false' }}"
+                    aria-controls="navbar-getting-started"><span class="dash-micon"><i
+                            class="ti ti-users"></i></span><span class="dash-mtext">Physical Card</span><span
+                        class="dash-arrow"><i data-feather="chevron-right"></i></span>
+                    </a>
+                    <ul class="dash-submenu">
 
-                    </li>
+                            <li class="dash-item {{ (Request::segment(1) == 'sadmin_request_cards')?'active2':''}}">
+                              <a href="{{route('physical.sadmin_view_request_order')}}" class="dash-link"> <span class="dash-mtext">Admin Requested Order</span></a>
+                            </li>
+
+                            <li class="dash-item {{ (Request::segment(1) == 'request_cards')?'active2':''}}">
+                                <a href="{{route('physical.view_request_order')}}" class="dash-link"> <span class="dash-mtext">Requested Order</span></a>
+                            </li>
+                        
+                            <li class="dash-item {{ (Request::segment(1) == 'physical_card')?'active1':''}}">
+                                <a href="{{route('physical_card.index')}}" class="dash-link"><span class="dash-mtext">View Template</span></a>
+                            </li>
+                    </ul>
+                </li>
+
+
+               
                
                 @if(\Auth::user()->can('manage appointment'))
                     <li class="dash-item {{ (Request::segment(1) == 'appointments')?'active':''}}">

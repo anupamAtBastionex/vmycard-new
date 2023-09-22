@@ -1,0 +1,1 @@
+ALTER TABLE `plans` ADD `qty_physical_card` int NULL AFTER `themes`;  // byavinash

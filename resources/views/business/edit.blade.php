@@ -189,7 +189,7 @@
                                 <div class="row gy-4">
                                     <div class="col-lg-8 col-md-7">
                                         {{ Form::open(['route' => ['business.edit-theme', $business->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) }}
-                                        <div class="select-theme-portion">
+                                        <div class="select-theme-portion L192">
                                             <div class="d-flex align-items-center justify-content-between mb-4 ">
                                                 <h5 class="mb-0">{{__('Select Theme:')}}</h5>
                                                 {{ Form::hidden('themefile', null, ['id' => 'themefile']) }}

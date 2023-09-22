@@ -81,6 +81,14 @@
                                         <i class="text-primary ti ti-circle-plus"></i></span>
                                     {{ $plan->max_users == '-1' ? 'Unlimited' : $plan->max_users }} {{ __('Users') }}
                                 </li>
+
+                                <li>
+                                    <span class="theme-avtar">
+                                        <i class="text-primary ti ti-circle-plus"></i></span>
+                                    {{ $plan->qty_physical_card == '' ? 0 : $plan->qty_physical_card }} {{ 'Physical Card' }}
+                                </li>
+
+
                                 @if ($plan->enable_custdomain == 'on')
                                     <li>
                                         <span class="theme-avtar">

@@ -2,3 +2,6 @@
 /.vscode
 /vendor
 /storage
+/storage/*
+/storage*
+

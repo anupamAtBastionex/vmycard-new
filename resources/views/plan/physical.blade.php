@@ -123,8 +123,8 @@ li.degnition {
     font-weight: bold;
     color:#fff;
     position: absolute;
-    top: 134px;
-    left: 83px;
+       top: 138px;
+    left: 86px;
 }
 
 li.name-crdowner {
@@ -192,7 +192,6 @@ li.qrcode img {
 }
 
 .flip-card-back {
-  background-color: #2980b9;
   color: white;
   transform: rotateY(180deg);
   background-image: url("{{ $SER }}/assets/card-images/1BackBlank.png");
@@ -213,6 +212,8 @@ img.spingif {
     </style>
 @endpush
 @section('content')
+
+
  <div class=" row justify-content-center">
     <div class="col-12 col-lg-5">
     <img src="{{ $SER }}/assets/card-images/loader3.gif" class="spingif d-none " />
@@ -275,7 +276,9 @@ input[type="radio"]:checked + label img {
 }
 </style>
 <hr/>
-         <div class="row justify-content-center  d-flex flex-row flex-nowrap overflow-auto ot mt-5">
+
+
+    <div class=" gy-4 row justify-content-center  d-flex flex-row flex-nowrap overflow-auto ot mt-5">
          @php $jj=""; @endphp
                 @foreach (range(1, 4) as $key=>$value)
                     @if($value==1)
@@ -284,45 +287,127 @@ input[type="radio"]:checked + label img {
                 @php $jj=""; @endphp
             @endif
          <div class="col-12 col-lg-3">
-    <div class=" ">
+        <div class=" ">
         <input type="radio" {{ $jj }} class="custom-control-input  card_design_id_{{ $value }}" value="{{ $value }}"
             id="ck2{{ $value }}" name="card_design_id">
         <label class="Dcng_phy_card L136" id="vvn_{{$key}}" data-card_design_id="{{ $value }}" for="ck2{{ $value }}">
             <img src="{{ asset('assets/card-images/' . $value . 'FrontBlank.png') }}" alt=""
                 data-card_design_id="{{ $value }}" class="img-fluid">
         </label>
+
+        
     </div>
 </div>
 @endforeach
+
+
 </div>
+
+<style>
+    .sclFlex{
+        flex-direction: row-reverse;
+    }
+</style>
+@php 
+    $bid = isset($qr_detail->business_id) ? $qr_detail->business_id : null;
+    $uid = isset($user->current_business) ? $user->current_business : null;
+    $cid=null;
+
+
+    $users = \Auth::user();
+    $profile = \App\Models\Utility::get_file('uploads/avatar');
+    $logo = \App\Models\Utility::get_file('uploads/logo/');
+    $company_logo = Utility::getValByName('company_logo');
+    $company_small_logo = Utility::getValByName('company_small_logo');
+    $currantLang = $users->currentLanguage();
+    $fullLang = \App\Models\Languages::where('code', $currantLang)->first();
+    $languages = Utility::languages();
+    
+    $businesses = App\Models\Business::allBusiness();
+    $currantBusiness = $users->currentBusiness();
+    //$bussiness_id = !empty($users->current_business)?$users->current_business:'';
+    $bussiness_id = $users->current_business;
+
+
+    
+@endphp
+
+    <form name="card_request" id="card_request" action="/card_request" method="post">
+        <input type="hidden" name="cid" id="cid" value="1" />
+        <input type="hidden" name="bid" id="bid" value="{{ $bussiness_id }}" />
+        <input type="hidden" name="uid" id="uid" value="{{ $users->id }}"/>
+        <div class="d-flex align-items-center justify-content-between mt-3 sclFlex">
+            <h5 class="mb-0"></h5>
+            <button type="submit" class="btn btn-primary ">   <i class="me-2" data-feather="folder"></i> Request Now</button>
+        </div>
+    </form>
+
+
+
+
          <script>
-            // generate_qr();
 
             function seAutoTemplate(desid, vcid, vid) {
                 $('.spingif').removeClass('d-none');
                 $('.flip-card').addClass('d-none');
-            var currentURL = window.location.href;
-            var url = new URL(currentURL);
-            var baseUrl2 = url.protocol + '//' + url.host;
-            $.ajax({
-                url: '/get_dyn_phycard', // Laravel route URL
-                type: 'POST',
-                data: { card_design_id: desid, rdo_vcard_id: vcid },
-                success: function (response) {
-                    $('.spingif').addClass('d-none');
-                    $('.flip-card').removeClass('d-none');
-                   $('.card-display').html(response.html);
-                },
-                error: function (error) {
-                console.log('Error:', error);
-                }
-            });
+                var currentURL = window.location.href;
+                var url = new URL(currentURL);
+                var baseUrl2 = url.protocol + '//' + url.host;
+                $.ajax({
+                    url: '/get_dyn_phycard', // Laravel route URL
+                    type: 'POST',
+                    data: { card_design_id: desid, rdo_vcard_id: vcid },
+                    success: function (response) {
+                        $('.spingif').addClass('d-none');
+                        $('.flip-card').removeClass('d-none');
+                    $('.card-display').html(response.html);
+                    },
+                    error: function (error) {
+                    console.log('Error:', error);
+                    }
+                });
             }
+
+            function seRpk(uid,bid,cid) {
+                $('.spingif').removeClass('d-none');
+                $('.flip-card').addClass('d-none');
+                var currentURL = window.location.href;
+                var url = new URL(currentURL);
+                var baseUrl2 = url.protocol + '//' + url.host;
+                $.ajax({
+                    url: '/card_request', // Laravel route URL
+                    type: 'POST',
+                    data: { uid: uid, bid: bid, cid:cid },
+                    success: function (response) {
+                        $('.spingif').addClass('d-none');
+                        $('.flip-card').removeClass('d-none');
+                        $('.card-display').html(response.html);
+                    },
+                    error: function (error) {
+                    console.log('Error:', error);
+                    }
+                });
+            }
+
+
             $(".Dcng_phy_card").click(function(){
                 var rdo_vcard_id = 1; //document.querySelector('input[name="rdo_vcard_id"]:checked');
                 var card_design_id_val = $(this).attr('data-card_design_id');
+                $('#cid').val(card_design_id_val);
                 seAutoTemplate(card_design_id_val, rdo_vcard_id.value, 0);
             });
+
+            $(".sclFlexBtn").click(function(){
+                // var rdo_vcard_id = 1; //document.querySelector('input[name="rdo_vcard_id"]:checked');
+                // var card_design_id_val = $(this).attr('data-card_design_id');
+                // seAutoTemplate(card_design_id_val, rdo_vcard_id.value, 0);
+
+                seRpk(2,2,3);
+
+
+
+            });
+
 
 
 
