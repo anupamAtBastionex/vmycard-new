@@ -27,6 +27,7 @@
                 <table class="table" id="pc-dt-export">
                     <thead>
                         <tr>
+                            <th>{{__('Order ID')}}</th>
                             <th>{{__('Name')}}</th>
                             <th>{{__('Business Name')}}</th>
                             <th>{{__('Designation')}}</th>
@@ -39,6 +40,7 @@
                     <tbody>
                         @foreach($card_request_deatails as $val)
                             <tr>
+                                 <td>{{ strpad($val->id) }}</td>
                                 <td>{{ getUserName($val->user_id); }}</td>
                                 <td>{{ getBusinessName($val->business_id); }}</td>
                                 <td>{{ $val->designation }}</td>

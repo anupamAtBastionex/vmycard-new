@@ -184,7 +184,7 @@ class PhysicalController extends Controller
         $cardrequest->business_id = $request->bid;
         $cardrequest->card_id = $request->cid;
         $cardrequest->logo_url = $logo_p;
-        $cardrequest->qr_code = $qr_detail->id;
+        $cardrequest->qr_code = isset($qr_detail->id) ? $qr_detail->id : null;
         $cardrequest->name = $business->title;
         $cardrequest->designation = $business->designation;
         $cardrequest->phone = $c_phone;

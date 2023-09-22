@@ -287,6 +287,10 @@
 		return $dateDMY;
 	}
 
+	function strpad($number){
+		return $paddedNumber = str_pad($number, 5, '0', STR_PAD_LEFT);
+	}
+
 
 
 ?>

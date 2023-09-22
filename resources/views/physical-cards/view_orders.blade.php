@@ -27,33 +27,29 @@
                 <table class="table" id="pc-dt-export">
                     <thead>
                         <tr>
-                            <th>{{__('Date')}}</th>
-                            <th>{{__('Name')}}</th>
+                            <th>{{__('Order ID')}}</th>
+                            <th>{{__('Business Name')}}</th>
                             <th>{{__('Designation')}}</th>
                             <th>{{__('Email')}}</th>
-                            <th>{{__('Phone')}}</th>
+                            <th>{{__('Comment')}}</th>
                             <th>{{__('Status')}}</th>
-                            <th id="ignore">{{__('Action')}}</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($card_request_deatails as $val)
                             <tr>
-                                <td>{{ $val->ordered_at }}</td>
+                                
+                                <td>{{ strpad($val->id) }}</td>
                                 <td>{{ $val->name }}</td>
                                 <td>{{ $val->designation }}</td>
                                 <td>{{ $val->email }}</td>
-                                <td>{{ $val->phone }}</td>
+                                <td>{{ $val->comment }}</td>
                                 @php
-                                    $status = ($val->status == 1) ? 'Active' : (($val->status == 2) ? 'Pending' : '');
-
+                                    $status =  getStatus($val->status);
+                                    $st_class =  getStClass($val->status);
                                 @endphp
-                                <td><span class="badge bg-warning p-2 px-3 rounded">{{ ucFirst($status) }}</span></td>
-                                <div class="row float-end">
-                                    <td class="d-flex">
-                                         -
-                                    </td>
-                                </div>
+                                <td><span class="badge bg-{{ $st_class }} p-2 px-3 rounded">{{ ucFirst($status) }}</span></td>
+                               
                             </tr>
                         @endforeach
                     </tbody>
